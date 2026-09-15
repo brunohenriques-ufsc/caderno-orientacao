@@ -1,0 +1,22 @@
+rules_version = '2';
+
+// Regras do Cloud Storage (anexos). Cole em Firebase → Storage → Regras.
+// Só é preciso se ativar os anexos de ficheiros (plano Blaze); ver o guia.
+service firebase.storage {
+  match /b/{bucket}/o {
+    function autenticado() { return request.auth != null && request.auth.token.email_verified == true; }
+    function meuEmail() { return request.auth.token.email.lower(); }
+    function ehOrientador() { return autenticado() && meuEmail() == 'bruno.henriques@ufsc.br'; }
+
+    // Cada pessoa escreve na sua própria pasta; todos os autenticados leem
+    // (os endereços só circulam dentro do Caderno).
+    match /anexos/{email}/{ficheiro} {
+      allow read: if autenticado();
+      allow write: if (ehOrientador() || (autenticado() && email == meuEmail()))
+        && request.resource.size < 10 * 1024 * 1024
+        && request.resource.contentType.matches('application/pdf|image/.*|text/.*|application/vnd.*|application/msword|application/zip');
+      allow delete: if ehOrientador() || (autenticado() && email == meuEmail());
+    }
+    match /{outro=**} { allow read, write: if false; }
+  }
+}

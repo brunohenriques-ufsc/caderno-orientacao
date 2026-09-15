@@ -1,0 +1,2135 @@
+{
+ "formato": "caderno-orientacao",
+ "versao": 1,
+ "exportadoEm": "2026-09-11T12:00:00Z",
+ "colecoes": {
+  "projetos": {
+   "p1": {
+    "sigla": "AQUAREM",
+    "nome": "Remoção de contaminantes emergentes em águas residuais",
+    "tematica": "Remediação ambiental",
+    "financiador": "CNPq – Universal",
+    "processo": "(exemplo)",
+    "inicio": "2023-01-01",
+    "fim": "2027-12-31",
+    "descricao": "Processos de adsorção e oxidação avançada para fármacos e pesticidas em efluentes.",
+    "exemplo": true
+   },
+   "p2": {
+    "sigla": "CIRCULA",
+    "nome": "Recuperação de elementos críticos a partir de resíduos eletrônicos",
+    "tematica": "Economia circular",
+    "financiador": "FAPESC",
+    "processo": "(exemplo)",
+    "inicio": "2024-01-01",
+    "fim": "2027-06-30",
+    "descricao": "Lixiviação seletiva e sorção para recuperar terras raras e metais de valor.",
+    "exemplo": true
+   },
+   "p3": {
+    "sigla": "BIOSORB",
+    "nome": "Biossorventes a partir de biomassa marinha",
+    "tematica": "Economia circular",
+    "financiador": "CAPES – PROEX",
+    "processo": "(exemplo)",
+    "inicio": "2022-06-01",
+    "fim": "2026-12-31",
+    "descricao": "Valorização de macroalgas e resíduos agroindustriais como materiais sorventes.",
+    "exemplo": true
+   },
+   "p4": {
+    "sigla": "SENSAGUA",
+    "nome": "Sensores de baixo custo para monitoramento de metais em água",
+    "tematica": "Monitoramento ambiental",
+    "financiador": "CNPq – Chamada temática",
+    "processo": "(exemplo)",
+    "inicio": "2025-03-01",
+    "fim": "2028-02-29",
+    "descricao": "Eletrodos modificados e protocolos de campo para monitoramento contínuo.",
+    "exemplo": true
+   }
+  },
+  "orientandos": {
+   "o01": {
+    "nome": "Ana Beatriz Moura",
+    "email": "ana.moura@exemplo.br",
+    "nivel": "Doutorado",
+    "programa": "PPG em Química",
+    "projetoId": "p1",
+    "tematica": "Remediação ambiental",
+    "titulo": "Adsorventes de carbono para remoção de fármacos em efluentes hospitalares",
+    "coorientador": "Profa. Clara Mendes",
+    "bolsa": "CAPES – DS",
+    "bolsaFim": "2027-02-28",
+    "inicio": "2023-03-01",
+    "prazo": "2027-02-28",
+    "fim": "",
+    "situacao": "Ativo",
+    "progExp": 85,
+    "progEscrita": 45,
+    "marcos": [
+     {
+      "id": "mo010",
+      "tipo": "Matrícula / início",
+      "prevista": "2023-03-01",
+      "realizada": "2023-03-01",
+      "obs": ""
+     },
+     {
+      "id": "mo011",
+      "tipo": "Créditos em disciplinas",
+      "prevista": "2024-07-31",
+      "realizada": "2024-06-28",
+      "obs": ""
+     },
+     {
+      "id": "mo012",
+      "tipo": "Proficiência em língua",
+      "prevista": "2023-12-15",
+      "realizada": "2023-11-10",
+      "obs": ""
+     },
+     {
+      "id": "mo013",
+      "tipo": "Exame de qualificação",
+      "prevista": "2024-12-15",
+      "realizada": "2024-11-20",
+      "obs": ""
+     },
+     {
+      "id": "mo014",
+      "tipo": "Estágio de docência",
+      "prevista": "2025-06-30",
+      "realizada": "2025-06-30",
+      "obs": ""
+     },
+     {
+      "id": "mo015",
+      "tipo": "Doutorado sanduíche",
+      "prevista": "2026-02-28",
+      "realizada": "2026-02-20",
+      "obs": ""
+     },
+     {
+      "id": "mo016",
+      "tipo": "Defesa",
+      "prevista": "2027-02-10",
+      "realizada": "",
+      "obs": ""
+     },
+     {
+      "id": "mo017",
+      "tipo": "Depósito da versão final",
+      "prevista": "2027-02-28",
+      "realizada": "",
+      "obs": ""
+     }
+    ],
+    "historico": [
+     {
+      "d": "2023-04-15",
+      "e": 5,
+      "w": 0
+     },
+     {
+      "d": "2023-05-30",
+      "e": 10,
+      "w": 0
+     },
+     {
+      "d": "2023-07-14",
+      "e": 15,
+      "w": 0
+     },
+     {
+      "d": "2023-08-28",
+      "e": 15,
+      "w": 0
+     },
+     {
+      "d": "2023-10-12",
+      "e": 15,
+      "w": 0
+     },
+     {
+      "d": "2023-11-26",
+      "e": 20,
+      "w": 0
+     },
+     {
+      "d": "2024-01-10",
+      "e": 25,
+      "w": 0
+     },
+     {
+      "d": "2024-02-24",
+      "e": 25,
+      "w": 0
+     },
+     {
+      "d": "2024-04-09",
+      "e": 35,
+      "w": 0
+     },
+     {
+      "d": "2024-05-24",
+      "e": 35,
+      "w": 0
+     },
+     {
+      "d": "2024-07-08",
+      "e": 40,
+      "w": 0
+     },
+     {
+      "d": "2024-08-22",
+      "e": 45,
+      "w": 0
+     },
+     {
+      "d": "2024-10-06",
+      "e": 45,
+      "w": 0
+     },
+     {
+      "d": "2024-11-20",
+      "e": 45,
+      "w": 5
+     },
+     {
+      "d": "2025-01-04",
+      "e": 45,
+      "w": 5
+     },
+     {
+      "d": "2025-02-18",
+      "e": 55,
+      "w": 5
+     },
+     {
+      "d": "2025-04-04",
+      "e": 55,
+      "w": 10
+     },
+     {
+      "d": "2025-05-19",
+      "e": 55,
+      "w": 10
+     },
+     {
+      "d": "2025-07-03",
+      "e": 60,
+      "w": 15
+     },
+     {
+      "d": "2025-08-17",
+      "e": 60,
+      "w": 20
+     },
+     {
+      "d": "2025-10-01",
+      "e": 65,
+      "w": 20
+     },
+     {
+      "d": "2025-11-15",
+      "e": 70,
+      "w": 25
+     },
+     {
+      "d": "2025-12-30",
+      "e": 70,
+      "w": 30
+     },
+     {
+      "d": "2026-02-13",
+      "e": 75,
+      "w": 30
+     },
+     {
+      "d": "2026-03-30",
+      "e": 75,
+      "w": 35
+     },
+     {
+      "d": "2026-05-14",
+      "e": 80,
+      "w": 35
+     },
+     {
+      "d": "2026-06-28",
+      "e": 80,
+      "w": 40
+     },
+     {
+      "d": "2026-08-12",
+      "e": 80,
+      "w": 45
+     },
+     {
+      "d": "2026-09-11",
+      "e": 85,
+      "w": 45
+     }
+    ],
+    "metaExpData": "2026-06-30",
+    "metaEscritaData": "",
+    "atualizadoEm": "2026-09-11T12:00:00Z",
+    "exemplo": true,
+    "matricula": "2200001",
+    "telefone": "(48) 9 9812-4471",
+    "emailContato": ""
+   },
+   "o02": {
+    "nome": "Rafael Nunes Pires",
+    "email": "rafael.pires@exemplo.br",
+    "nivel": "Doutorado",
+    "programa": "PPG em Engenharia Ambiental",
+    "projetoId": "p2",
+    "tematica": "Economia circular",
+    "titulo": "Lixiviação seletiva de neodímio em ímãs de discos rígidos descartados",
+    "coorientador": "",
+    "bolsa": "CNPq – GD",
+    "bolsaFim": "2028-02-29",
+    "inicio": "2024-03-01",
+    "prazo": "2028-02-29",
+    "fim": "",
+    "situacao": "Ativo",
+    "progExp": 40,
+    "progEscrita": 15,
+    "marcos": [
+     {
+      "id": "mo020",
+      "tipo": "Matrícula / início",
+      "prevista": "2024-03-01",
+      "realizada": "2024-03-01",
+      "obs": ""
+     },
+     {
+      "id": "mo021",
+      "tipo": "Proficiência em língua",
+      "prevista": "2024-12-15",
+      "realizada": "2024-12-02",
+      "obs": ""
+     },
+     {
+      "id": "mo022",
+      "tipo": "Créditos em disciplinas",
+      "prevista": "2025-07-31",
+      "realizada": "2025-07-15",
+      "obs": ""
+     },
+     {
+      "id": "mo023",
+      "tipo": "Exame de qualificação",
+      "prevista": "2026-08-31",
+      "realizada": "",
+      "obs": ""
+     },
+     {
+      "id": "mo024",
+      "tipo": "Estágio de docência",
+      "prevista": "2026-12-15",
+      "realizada": "",
+      "obs": ""
+     },
+     {
+      "id": "mo025",
+      "tipo": "Defesa",
+      "prevista": "2028-02-10",
+      "realizada": "",
+      "obs": ""
+     },
+     {
+      "id": "mo026",
+      "tipo": "Depósito da versão final",
+      "prevista": "2028-02-29",
+      "realizada": "",
+      "obs": ""
+     }
+    ],
+    "historico": [
+     {
+      "d": "2024-04-15",
+      "e": 5,
+      "w": 0
+     },
+     {
+      "d": "2024-05-30",
+      "e": 10,
+      "w": 0
+     },
+     {
+      "d": "2024-07-14",
+      "e": 10,
+      "w": 0
+     },
+     {
+      "d": "2024-08-28",
+      "e": 15,
+      "w": 0
+     },
+     {
+      "d": "2024-10-12",
+      "e": 15,
+      "w": 0
+     },
+     {
+      "d": "2024-11-26",
+      "e": 15,
+      "w": 0
+     },
+     {
+      "d": "2025-01-10",
+      "e": 15,
+      "w": 0
+     },
+     {
+      "d": "2025-02-24",
+      "e": 25,
+      "w": 5
+     },
+     {
+      "d": "2025-04-10",
+      "e": 25,
+      "w": 5
+     },
+     {
+      "d": "2025-05-25",
+      "e": 25,
+      "w": 5
+     },
+     {
+      "d": "2025-07-09",
+      "e": 25,
+      "w": 5
+     },
+     {
+      "d": "2025-08-23",
+      "e": 30,
+      "w": 5
+     },
+     {
+      "d": "2025-10-07",
+      "e": 30,
+      "w": 10
+     },
+     {
+      "d": "2025-11-21",
+      "e": 35,
+      "w": 10
+     },
+     {
+      "d": "2026-01-05",
+      "e": 35,
+      "w": 15
+     },
+     {
+      "d": "2026-02-19",
+      "e": 35,
+      "w": 15
+     },
+     {
+      "d": "2026-04-05",
+      "e": 35,
+      "w": 15
+     },
+     {
+      "d": "2026-05-20",
+      "e": 35,
+      "w": 15
+     },
+     {
+      "d": "2026-07-04",
+      "e": 35,
+      "w": 15
+     },
+     {
+      "d": "2026-08-18",
+      "e": 35,
+      "w": 15
+     },
+     {
+      "d": "2026-09-11",
+      "e": 40,
+      "w": 15
+     }
+    ],
+    "metaExpData": "",
+    "metaEscritaData": "",
+    "atualizadoEm": "2026-09-11T12:00:00Z",
+    "exemplo": true,
+    "matricula": "2210002",
+    "telefone": "",
+    "emailContato": ""
+   },
+   "o03": {
+    "nome": "Juliana Kato",
+    "email": "juliana.kato@exemplo.br",
+    "nivel": "Doutorado",
+    "programa": "PPG em Química",
+    "projetoId": "p3",
+    "tematica": "Economia circular",
+    "titulo": "Macroalgas modificadas como biossorventes para cádmio e chumbo",
+    "coorientador": "",
+    "bolsa": "CAPES – PROEX",
+    "bolsaFim": "2026-07-31",
+    "inicio": "2022-08-01",
+    "prazo": "2027-01-31",
+    "fim": "",
+    "situacao": "Ativo",
+    "progExp": 95,
+    "progEscrita": 70,
+    "marcos": [
+     {
+      "id": "mo030",
+      "tipo": "Matrícula / início",
+      "prevista": "2022-08-01",
+      "realizada": "2022-08-01",
+      "obs": ""
+     },
+     {
+      "id": "mo031",
+      "tipo": "Exame de qualificação",
+      "prevista": "2023-12-15",
+      "realizada": "2023-12-05",
+      "obs": ""
+     },
+     {
+      "id": "mo032",
+      "tipo": "Estágio de docência",
+      "prevista": "2024-06-30",
+      "realizada": "2024-06-30",
+      "obs": ""
+     },
+     {
+      "id": "mo033",
+      "tipo": "Prorrogação de prazo",
+      "prevista": "2026-07-31",
+      "realizada": "2026-06-15",
+      "obs": ""
+     },
+     {
+      "id": "mo034",
+      "tipo": "Defesa",
+      "prevista": "2026-12-10",
+      "realizada": "",
+      "obs": ""
+     },
+     {
+      "id": "mo035",
+      "tipo": "Depósito da versão final",
+      "prevista": "2027-01-31",
+      "realizada": "",
+      "obs": ""
+     }
+    ],
+    "historico": [
+     {
+      "d": "2022-09-15",
+      "e": 5,
+      "w": 0
+     },
+     {
+      "d": "2022-10-30",
+      "e": 5,
+      "w": 0
+     },
+     {
+      "d": "2022-12-14",
+      "e": 15,
+      "w": 0
+     },
+     {
+      "d": "2023-01-28",
+      "e": 15,
+      "w": 0
+     },
+     {
+      "d": "2023-03-14",
+      "e": 20,
+      "w": 0
+     },
+     {
+      "d": "2023-04-28",
+      "e": 25,
+      "w": 0
+     },
+     {
+      "d": "2023-06-12",
+      "e": 25,
+      "w": 0
+     },
+     {
+      "d": "2023-07-27",
+      "e": 30,
+      "w": 0
+     },
+     {
+      "d": "2023-09-10",
+      "e": 35,
+      "w": 0
+     },
+     {
+      "d": "2023-10-25",
+      "e": 35,
+      "w": 0
+     },
+     {
+      "d": "2023-12-09",
+      "e": 35,
+      "w": 0
+     },
+     {
+      "d": "2024-01-23",
+      "e": 35,
+      "w": 0
+     },
+     {
+      "d": "2024-03-08",
+      "e": 40,
+      "w": 0
+     },
+     {
+      "d": "2024-04-22",
+      "e": 45,
+      "w": 0
+     },
+     {
+      "d": "2024-06-06",
+      "e": 45,
+      "w": 0
+     },
+     {
+      "d": "2024-07-21",
+      "e": 50,
+      "w": 0
+     },
+     {
+      "d": "2024-09-04",
+      "e": 50,
+      "w": 5
+     },
+     {
+      "d": "2024-10-19",
+      "e": 55,
+      "w": 10
+     },
+     {
+      "d": "2024-12-03",
+      "e": 60,
+      "w": 10
+     },
+     {
+      "d": "2025-01-17",
+      "e": 60,
+      "w": 15
+     },
+     {
+      "d": "2025-03-03",
+      "e": 65,
+      "w": 20
+     },
+     {
+      "d": "2025-04-17",
+      "e": 70,
+      "w": 25
+     },
+     {
+      "d": "2025-06-01",
+      "e": 70,
+      "w": 30
+     },
+     {
+      "d": "2025-07-16",
+      "e": 70,
+      "w": 30
+     },
+     {
+      "d": "2025-08-30",
+      "e": 75,
+      "w": 35
+     },
+     {
+      "d": "2025-10-14",
+      "e": 80,
+      "w": 40
+     },
+     {
+      "d": "2025-11-28",
+      "e": 80,
+      "w": 45
+     },
+     {
+      "d": "2026-01-12",
+      "e": 80,
+      "w": 45
+     },
+     {
+      "d": "2026-02-26",
+      "e": 85,
+      "w": 50
+     },
+     {
+      "d": "2026-04-12",
+      "e": 85,
+      "w": 60
+     },
+     {
+      "d": "2026-05-27",
+      "e": 90,
+      "w": 60
+     },
+     {
+      "d": "2026-07-11",
+      "e": 90,
+      "w": 65
+     },
+     {
+      "d": "2026-08-25",
+      "e": 90,
+      "w": 70
+     },
+     {
+      "d": "2026-09-11",
+      "e": 95,
+      "w": 70
+     }
+    ],
+    "metaExpData": "",
+    "metaEscritaData": "2026-11-15",
+    "atualizadoEm": "2026-09-11T12:00:00Z",
+    "exemplo": true,
+    "matricula": "2220003",
+    "telefone": "(48) 9 9645-2210",
+    "emailContato": ""
+   },
+   "o04": {
+    "nome": "Lucas Ferreira Dias",
+    "email": "lucas.dias@exemplo.br",
+    "nivel": "Mestrado",
+    "programa": "PPG em Química",
+    "projetoId": "p1",
+    "tematica": "Remediação ambiental",
+    "titulo": "Fotocatálise com TiO2 dopado para degradação de pesticidas",
+    "coorientador": "",
+    "bolsa": "CAPES – DS",
+    "bolsaFim": "2027-02-28",
+    "inicio": "2025-03-01",
+    "prazo": "2027-02-28",
+    "fim": "",
+    "situacao": "Ativo",
+    "progExp": 35,
+    "progEscrita": 10,
+    "marcos": [
+     {
+      "id": "mo040",
+      "tipo": "Matrícula / início",
+      "prevista": "2025-03-01",
+      "realizada": "2025-03-01",
+      "obs": ""
+     },
+     {
+      "id": "mo041",
+      "tipo": "Créditos em disciplinas",
+      "prevista": "2026-02-28",
+      "realizada": "2026-02-20",
+      "obs": ""
+     },
+     {
+      "id": "mo042",
+      "tipo": "Proficiência em língua",
+      "prevista": "2025-12-15",
+      "realizada": "2025-11-28",
+      "obs": ""
+     },
+     {
+      "id": "mo043",
+      "tipo": "Qualificação / defesa de projeto",
+      "prevista": "2026-10-15",
+      "realizada": "",
+      "obs": ""
+     },
+     {
+      "id": "mo044",
+      "tipo": "Defesa",
+      "prevista": "2027-02-10",
+      "realizada": "",
+      "obs": ""
+     },
+     {
+      "id": "mo045",
+      "tipo": "Depósito da versão final",
+      "prevista": "2027-02-28",
+      "realizada": "",
+      "obs": ""
+     }
+    ],
+    "historico": [
+     {
+      "d": "2025-04-15",
+      "e": 5,
+      "w": 0
+     },
+     {
+      "d": "2025-05-30",
+      "e": 10,
+      "w": 0
+     },
+     {
+      "d": "2025-07-14",
+      "e": 15,
+      "w": 0
+     },
+     {
+      "d": "2025-08-28",
+      "e": 15,
+      "w": 0
+     },
+     {
+      "d": "2025-10-12",
+      "e": 15,
+      "w": 0
+     },
+     {
+      "d": "2025-11-26",
+      "e": 20,
+      "w": 0
+     },
+     {
+      "d": "2026-01-10",
+      "e": 20,
+      "w": 0
+     },
+     {
+      "d": "2026-02-24",
+      "e": 25,
+      "w": 5
+     },
+     {
+      "d": "2026-04-10",
+      "e": 30,
+      "w": 5
+     },
+     {
+      "d": "2026-05-25",
+      "e": 30,
+      "w": 10
+     },
+     {
+      "d": "2026-07-09",
+      "e": 35,
+      "w": 10
+     },
+     {
+      "d": "2026-08-23",
+      "e": 35,
+      "w": 10
+     },
+     {
+      "d": "2026-09-11",
+      "e": 35,
+      "w": 10
+     }
+    ],
+    "metaExpData": "",
+    "metaEscritaData": "",
+    "atualizadoEm": "2026-09-11T12:00:00Z",
+    "exemplo": true,
+    "matricula": "2230004",
+    "telefone": "",
+    "emailContato": ""
+   },
+   "o05": {
+    "nome": "Mariana Oliveira Costa",
+    "email": "mariana.costa@exemplo.br",
+    "nivel": "Mestrado",
+    "programa": "PPG em Engenharia Ambiental",
+    "projetoId": "p2",
+    "tematica": "Economia circular",
+    "titulo": "Resinas de troca iônica para recuperação de cobre de placas de circuito",
+    "coorientador": "Dra. Helena Vasconcelos",
+    "bolsa": "CAPES – DS",
+    "bolsaFim": "2026-07-31",
+    "inicio": "2024-08-01",
+    "prazo": "2026-12-31",
+    "fim": "",
+    "situacao": "Ativo",
+    "progExp": 90,
+    "progEscrita": 55,
+    "marcos": [
+     {
+      "id": "mo050",
+      "tipo": "Matrícula / início",
+      "prevista": "2024-08-01",
+      "realizada": "2024-08-01",
+      "obs": ""
+     },
+     {
+      "id": "mo051",
+      "tipo": "Qualificação / defesa de projeto",
+      "prevista": "2025-06-30",
+      "realizada": "2025-06-12",
+      "obs": ""
+     },
+     {
+      "id": "mo052",
+      "tipo": "Prorrogação de prazo",
+      "prevista": "2026-07-31",
+      "realizada": "2026-07-10",
+      "obs": ""
+     },
+     {
+      "id": "mo053",
+      "tipo": "Defesa",
+      "prevista": "2026-11-27",
+      "realizada": "",
+      "obs": ""
+     },
+     {
+      "id": "mo054",
+      "tipo": "Depósito da versão final",
+      "prevista": "2026-12-31",
+      "realizada": "",
+      "obs": ""
+     }
+    ],
+    "historico": [
+     {
+      "d": "2024-09-15",
+      "e": 10,
+      "w": 0
+     },
+     {
+      "d": "2024-10-30",
+      "e": 15,
+      "w": 0
+     },
+     {
+      "d": "2024-12-14",
+      "e": 20,
+      "w": 0
+     },
+     {
+      "d": "2025-01-28",
+      "e": 25,
+      "w": 0
+     },
+     {
+      "d": "2025-03-14",
+      "e": 35,
+      "w": 0
+     },
+     {
+      "d": "2025-04-28",
+      "e": 40,
+      "w": 0
+     },
+     {
+      "d": "2025-06-12",
+      "e": 40,
+      "w": 0
+     },
+     {
+      "d": "2025-07-27",
+      "e": 45,
+      "w": 0
+     },
+     {
+      "d": "2025-09-10",
+      "e": 55,
+      "w": 5
+     },
+     {
+      "d": "2025-10-25",
+      "e": 55,
+      "w": 15
+     },
+     {
+      "d": "2025-12-09",
+      "e": 65,
+      "w": 15
+     },
+     {
+      "d": "2026-01-23",
+      "e": 65,
+      "w": 20
+     },
+     {
+      "d": "2026-03-09",
+      "e": 75,
+      "w": 30
+     },
+     {
+      "d": "2026-04-23",
+      "e": 75,
+      "w": 35
+     },
+     {
+      "d": "2026-06-07",
+      "e": 85,
+      "w": 40
+     },
+     {
+      "d": "2026-07-22",
+      "e": 85,
+      "w": 50
+     },
+     {
+      "d": "2026-09-05",
+      "e": 85,
+      "w": 50
+     },
+     {
+      "d": "2026-09-11",
+      "e": 90,
+      "w": 55
+     }
+    ],
+    "metaExpData": "",
+    "metaEscritaData": "",
+    "atualizadoEm": "2026-09-11T12:00:00Z",
+    "exemplo": true,
+    "matricula": "2240005",
+    "telefone": "(47) 9 9911-3387",
+    "emailContato": ""
+   },
+   "o06": {
+    "nome": "Pedro Henrique Sá",
+    "email": "pedro.sa@exemplo.br",
+    "nivel": "Mestrado",
+    "programa": "PPG em Engenharia Ambiental",
+    "projetoId": "p4",
+    "tematica": "Monitoramento ambiental",
+    "titulo": "Eletrodos impressos para detecção de mercúrio em água de abastecimento",
+    "coorientador": "",
+    "bolsa": "Sem bolsa",
+    "bolsaFim": "",
+    "inicio": "2025-08-01",
+    "prazo": "2027-07-31",
+    "fim": "",
+    "situacao": "Ativo",
+    "progExp": 20,
+    "progEscrita": 5,
+    "marcos": [
+     {
+      "id": "mo060",
+      "tipo": "Matrícula / início",
+      "prevista": "2025-08-01",
+      "realizada": "2025-08-01",
+      "obs": ""
+     },
+     {
+      "id": "mo061",
+      "tipo": "Créditos em disciplinas",
+      "prevista": "2026-07-31",
+      "realizada": "",
+      "obs": ""
+     },
+     {
+      "id": "mo062",
+      "tipo": "Qualificação / defesa de projeto",
+      "prevista": "2027-02-28",
+      "realizada": "",
+      "obs": ""
+     },
+     {
+      "id": "mo063",
+      "tipo": "Defesa",
+      "prevista": "2027-07-15",
+      "realizada": "",
+      "obs": ""
+     },
+     {
+      "id": "mo064",
+      "tipo": "Depósito da versão final",
+      "prevista": "2027-07-31",
+      "realizada": "",
+      "obs": ""
+     }
+    ],
+    "historico": [
+     {
+      "d": "2026-02-10",
+      "e": 10,
+      "w": 0
+     },
+     {
+      "d": "2026-06-19",
+      "e": 20,
+      "w": 5
+     }
+    ],
+    "metaExpData": "",
+    "metaEscritaData": "",
+    "atualizadoEm": "2026-09-11T12:00:00Z",
+    "exemplo": true,
+    "matricula": "",
+    "telefone": "",
+    "emailContato": ""
+   },
+   "o07": {
+    "nome": "Camila Rocha",
+    "email": "camila.rocha@exemplo.br",
+    "nivel": "Iniciação científica",
+    "programa": "Graduação em Química",
+    "projetoId": "p1",
+    "tematica": "Remediação ambiental",
+    "titulo": "Ensaios de adsorção de diclofenaco em carvão ativado",
+    "coorientador": "Ana Beatriz Moura",
+    "bolsa": "CNPq – PIBIC",
+    "bolsaFim": "2027-08-31",
+    "inicio": "2025-09-01",
+    "prazo": "2027-08-31",
+    "fim": "",
+    "situacao": "Ativo",
+    "progExp": 60,
+    "progEscrita": 30,
+    "marcos": [
+     {
+      "id": "mo070",
+      "tipo": "Início",
+      "prevista": "2025-09-01",
+      "realizada": "2025-09-01",
+      "obs": ""
+     },
+     {
+      "id": "mo071",
+      "tipo": "Relatório parcial",
+      "prevista": "2026-03-01",
+      "realizada": "2026-02-25",
+      "obs": ""
+     },
+     {
+      "id": "mo072",
+      "tipo": "Relatório final / seminário de IC",
+      "prevista": "2026-08-31",
+      "realizada": "2026-08-20",
+      "obs": ""
+     },
+     {
+      "id": "mo073",
+      "tipo": "Renovação da bolsa",
+      "prevista": "2026-09-01",
+      "realizada": "2026-08-28",
+      "obs": ""
+     },
+     {
+      "id": "mo074",
+      "tipo": "Relatório parcial",
+      "prevista": "2027-03-01",
+      "realizada": "",
+      "obs": ""
+     },
+     {
+      "id": "mo075",
+      "tipo": "Relatório final / seminário de IC",
+      "prevista": "2027-08-31",
+      "realizada": "",
+      "obs": ""
+     }
+    ],
+    "historico": [
+     {
+      "d": "2025-10-16",
+      "e": 10,
+      "w": 0
+     },
+     {
+      "d": "2025-11-30",
+      "e": 15,
+      "w": 0
+     },
+     {
+      "d": "2026-01-14",
+      "e": 25,
+      "w": 0
+     },
+     {
+      "d": "2026-02-28",
+      "e": 30,
+      "w": 0
+     },
+     {
+      "d": "2026-04-14",
+      "e": 35,
+      "w": 10
+     },
+     {
+      "d": "2026-05-29",
+      "e": 45,
+      "w": 15
+     },
+     {
+      "d": "2026-07-13",
+      "e": 50,
+      "w": 20
+     },
+     {
+      "d": "2026-08-27",
+      "e": 55,
+      "w": 25
+     },
+     {
+      "d": "2026-09-11",
+      "e": 60,
+      "w": 30
+     }
+    ],
+    "metaExpData": "",
+    "metaEscritaData": "",
+    "atualizadoEm": "2026-09-11T12:00:00Z",
+    "exemplo": true,
+    "matricula": "2200007",
+    "telefone": "(48) 9 9702-5518",
+    "emailContato": ""
+   },
+   "o08": {
+    "nome": "Gabriel Tavares",
+    "email": "gabriel.tavares@exemplo.br",
+    "nivel": "Iniciação científica",
+    "programa": "Graduação em Engenharia Química",
+    "projetoId": "p3",
+    "tematica": "Economia circular",
+    "titulo": "Caracterização de biomassa de macroalgas por FTIR e BET",
+    "coorientador": "Juliana Kato",
+    "bolsa": "CNPq – PIBITI",
+    "bolsaFim": "2027-08-31",
+    "inicio": "2026-09-01",
+    "prazo": "2027-08-31",
+    "fim": "",
+    "situacao": "Ativo",
+    "progExp": 5,
+    "progEscrita": 0,
+    "marcos": [
+     {
+      "id": "mo080",
+      "tipo": "Início",
+      "prevista": "2026-09-01",
+      "realizada": "2026-09-01",
+      "obs": ""
+     },
+     {
+      "id": "mo081",
+      "tipo": "Relatório parcial",
+      "prevista": "2027-03-01",
+      "realizada": "",
+      "obs": ""
+     },
+     {
+      "id": "mo082",
+      "tipo": "Relatório final / seminário de IC",
+      "prevista": "2027-08-31",
+      "realizada": "",
+      "obs": ""
+     }
+    ],
+    "historico": [],
+    "metaExpData": "",
+    "metaEscritaData": "",
+    "atualizadoEm": "2026-09-11T12:00:00Z",
+    "exemplo": true,
+    "matricula": "",
+    "telefone": "",
+    "emailContato": ""
+   },
+   "o09": {
+    "nome": "Letícia Amaral",
+    "email": "leticia.amaral@exemplo.br",
+    "nivel": "Iniciação científica",
+    "programa": "Graduação em Engenharia Sanitária",
+    "projetoId": "p4",
+    "tematica": "Monitoramento ambiental",
+    "titulo": "Coleta e preservação de amostras para análise de metais",
+    "coorientador": "",
+    "bolsa": "Voluntária",
+    "bolsaFim": "",
+    "inicio": "2026-03-01",
+    "prazo": "2027-02-28",
+    "fim": "",
+    "situacao": "Ativo",
+    "progExp": 40,
+    "progEscrita": 10,
+    "marcos": [
+     {
+      "id": "mo090",
+      "tipo": "Início",
+      "prevista": "2026-03-01",
+      "realizada": "2026-03-01",
+      "obs": ""
+     },
+     {
+      "id": "mo091",
+      "tipo": "Relatório parcial",
+      "prevista": "2026-09-01",
+      "realizada": "",
+      "obs": ""
+     },
+     {
+      "id": "mo092",
+      "tipo": "Relatório final / seminário de IC",
+      "prevista": "2027-02-28",
+      "realizada": "",
+      "obs": ""
+     }
+    ],
+    "historico": [
+     {
+      "d": "2026-07-30",
+      "e": 40,
+      "w": 10
+     }
+    ],
+    "metaExpData": "",
+    "metaEscritaData": "",
+    "atualizadoEm": "2026-09-11T12:00:00Z",
+    "exemplo": true,
+    "matricula": "",
+    "telefone": "",
+    "emailContato": ""
+   },
+   "o10": {
+    "nome": "Thiago Brandão",
+    "email": "thiago.brandao@exemplo.br",
+    "nivel": "Estágio",
+    "programa": "Graduação em Engenharia Química",
+    "projetoId": "p2",
+    "tematica": "Economia circular",
+    "titulo": "Estágio obrigatório: apoio a ensaios de lixiviação em escala de bancada",
+    "coorientador": "Rafael Nunes Pires",
+    "bolsa": "Estágio remunerado",
+    "bolsaFim": "2026-12-18",
+    "inicio": "2026-08-03",
+    "prazo": "2026-12-18",
+    "fim": "",
+    "situacao": "Ativo",
+    "progExp": 15,
+    "progEscrita": 0,
+    "marcos": [
+     {
+      "id": "mo100",
+      "tipo": "Início",
+      "prevista": "2026-08-03",
+      "realizada": "2026-08-03",
+      "obs": ""
+     },
+     {
+      "id": "mo101",
+      "tipo": "Plano de atividades assinado",
+      "prevista": "2026-08-14",
+      "realizada": "2026-08-12",
+      "obs": ""
+     },
+     {
+      "id": "mo102",
+      "tipo": "Relatório de estágio",
+      "prevista": "2026-12-11",
+      "realizada": "",
+      "obs": ""
+     },
+     {
+      "id": "mo103",
+      "tipo": "Término",
+      "prevista": "2026-12-18",
+      "realizada": "",
+      "obs": ""
+     }
+    ],
+    "historico": [
+     {
+      "d": "2026-09-11",
+      "e": 15,
+      "w": 0
+     }
+    ],
+    "metaExpData": "",
+    "metaEscritaData": "",
+    "atualizadoEm": "2026-09-11T12:00:00Z",
+    "exemplo": true,
+    "matricula": "2230010",
+    "telefone": "",
+    "emailContato": ""
+   },
+   "o11": {
+    "nome": "Helena Vasconcelos",
+    "email": "helena.vasconcelos@exemplo.br",
+    "nivel": "Pós-doutorado",
+    "programa": "Pós-doutorado",
+    "projetoId": "p2",
+    "tematica": "Economia circular",
+    "titulo": "Sorventes funcionalizados para separação de terras raras",
+    "coorientador": "",
+    "bolsa": "FAPESC – Pós-doc",
+    "bolsaFim": "2026-11-30",
+    "inicio": "2025-05-01",
+    "prazo": "2027-04-30",
+    "fim": "",
+    "situacao": "Ativo",
+    "progExp": 60,
+    "progEscrita": 50,
+    "marcos": [
+     {
+      "id": "mo110",
+      "tipo": "Início",
+      "prevista": "2025-05-01",
+      "realizada": "2025-05-01",
+      "obs": ""
+     },
+     {
+      "id": "mo111",
+      "tipo": "Relatório anual",
+      "prevista": "2026-05-01",
+      "realizada": "2026-04-28",
+      "obs": ""
+     },
+     {
+      "id": "mo112",
+      "tipo": "Renovação da bolsa",
+      "prevista": "2026-11-30",
+      "realizada": "",
+      "obs": ""
+     },
+     {
+      "id": "mo113",
+      "tipo": "Relatório final",
+      "prevista": "2027-04-30",
+      "realizada": "",
+      "obs": ""
+     }
+    ],
+    "historico": [
+     {
+      "d": "2025-06-15",
+      "e": 10,
+      "w": 0
+     },
+     {
+      "d": "2025-07-30",
+      "e": 15,
+      "w": 0
+     },
+     {
+      "d": "2025-09-13",
+      "e": 20,
+      "w": 0
+     },
+     {
+      "d": "2025-10-28",
+      "e": 20,
+      "w": 0
+     },
+     {
+      "d": "2025-12-12",
+      "e": 30,
+      "w": 0
+     },
+     {
+      "d": "2026-01-26",
+      "e": 35,
+      "w": 5
+     },
+     {
+      "d": "2026-03-12",
+      "e": 40,
+      "w": 15
+     },
+     {
+      "d": "2026-04-26",
+      "e": 45,
+      "w": 25
+     },
+     {
+      "d": "2026-06-10",
+      "e": 50,
+      "w": 30
+     },
+     {
+      "d": "2026-07-25",
+      "e": 55,
+      "w": 40
+     },
+     {
+      "d": "2026-09-08",
+      "e": 60,
+      "w": 50
+     },
+     {
+      "d": "2026-09-11",
+      "e": 60,
+      "w": 50
+     }
+    ],
+    "metaExpData": "",
+    "metaEscritaData": "",
+    "atualizadoEm": "2026-09-11T12:00:00Z",
+    "exemplo": true,
+    "matricula": "2240011",
+    "telefone": "",
+    "emailContato": ""
+   },
+   "o12": {
+    "nome": "Diego Martins",
+    "email": "diego.martins@exemplo.br",
+    "nivel": "Mestrado",
+    "programa": "PPG em Química",
+    "projetoId": "p1",
+    "tematica": "Remediação ambiental",
+    "titulo": "Ozonização catalítica de antibióticos em efluente sintético",
+    "coorientador": "",
+    "bolsa": "CAPES – DS",
+    "bolsaFim": "2026-02-28",
+    "inicio": "2024-03-01",
+    "prazo": "2026-02-28",
+    "fim": "2026-03-20",
+    "situacao": "Concluído",
+    "progExp": 100,
+    "progEscrita": 100,
+    "marcos": [
+     {
+      "id": "mo120",
+      "tipo": "Matrícula / início",
+      "prevista": "2024-03-01",
+      "realizada": "2024-03-01",
+      "obs": ""
+     },
+     {
+      "id": "mo121",
+      "tipo": "Qualificação / defesa de projeto",
+      "prevista": "2025-03-31",
+      "realizada": "2025-03-18",
+      "obs": ""
+     },
+     {
+      "id": "mo122",
+      "tipo": "Defesa",
+      "prevista": "2026-02-20",
+      "realizada": "2026-02-26",
+      "obs": ""
+     },
+     {
+      "id": "mo123",
+      "tipo": "Depósito da versão final",
+      "prevista": "2026-03-31",
+      "realizada": "2026-03-20",
+      "obs": ""
+     }
+    ],
+    "historico": [
+     {
+      "d": "2024-04-15",
+      "e": 10,
+      "w": 0
+     },
+     {
+      "d": "2024-05-30",
+      "e": 15,
+      "w": 0
+     },
+     {
+      "d": "2024-07-14",
+      "e": 25,
+      "w": 0
+     },
+     {
+      "d": "2024-08-28",
+      "e": 30,
+      "w": 0
+     },
+     {
+      "d": "2024-10-12",
+      "e": 35,
+      "w": 0
+     },
+     {
+      "d": "2024-11-26",
+      "e": 45,
+      "w": 0
+     },
+     {
+      "d": "2025-01-10",
+      "e": 50,
+      "w": 0
+     },
+     {
+      "d": "2025-02-24",
+      "e": 55,
+      "w": 5
+     },
+     {
+      "d": "2025-04-10",
+      "e": 60,
+      "w": 10
+     },
+     {
+      "d": "2025-05-25",
+      "e": 65,
+      "w": 25
+     },
+     {
+      "d": "2025-07-09",
+      "e": 70,
+      "w": 35
+     },
+     {
+      "d": "2025-08-23",
+      "e": 75,
+      "w": 45
+     },
+     {
+      "d": "2025-10-07",
+      "e": 85,
+      "w": 60
+     },
+     {
+      "d": "2025-11-21",
+      "e": 85,
+      "w": 70
+     },
+     {
+      "d": "2026-01-05",
+      "e": 90,
+      "w": 80
+     },
+     {
+      "d": "2026-02-19",
+      "e": 100,
+      "w": 95
+     },
+     {
+      "d": "2026-03-20",
+      "e": 100,
+      "w": 100
+     }
+    ],
+    "metaExpData": "",
+    "metaEscritaData": "",
+    "atualizadoEm": "2026-09-11T12:00:00Z",
+    "exemplo": true,
+    "matricula": "2250012",
+    "telefone": "",
+    "emailContato": ""
+   },
+   "o13": {
+    "nome": "Sofia Lemos",
+    "email": "sofia.lemos@exemplo.br",
+    "nivel": "Iniciação científica",
+    "programa": "Graduação em Química",
+    "projetoId": "p3",
+    "tematica": "Economia circular",
+    "titulo": "Pré-tratamento alcalino de biomassa de algas",
+    "coorientador": "",
+    "bolsa": "CNPq – PIBIC",
+    "bolsaFim": "2025-08-31",
+    "inicio": "2024-09-01",
+    "prazo": "2025-08-31",
+    "fim": "2025-08-31",
+    "situacao": "Concluído",
+    "progExp": 100,
+    "progEscrita": 100,
+    "marcos": [
+     {
+      "id": "mo130",
+      "tipo": "Início",
+      "prevista": "2024-09-01",
+      "realizada": "2024-09-01",
+      "obs": ""
+     },
+     {
+      "id": "mo131",
+      "tipo": "Relatório parcial",
+      "prevista": "2025-03-01",
+      "realizada": "2025-02-27",
+      "obs": ""
+     },
+     {
+      "id": "mo132",
+      "tipo": "Relatório final / seminário de IC",
+      "prevista": "2025-08-31",
+      "realizada": "2025-08-22",
+      "obs": ""
+     }
+    ],
+    "historico": [
+     {
+      "d": "2024-10-16",
+      "e": 15,
+      "w": 0
+     },
+     {
+      "d": "2024-11-30",
+      "e": 35,
+      "w": 0
+     },
+     {
+      "d": "2025-01-14",
+      "e": 40,
+      "w": 0
+     },
+     {
+      "d": "2025-02-28",
+      "e": 55,
+      "w": 5
+     },
+     {
+      "d": "2025-04-14",
+      "e": 65,
+      "w": 25
+     },
+     {
+      "d": "2025-05-29",
+      "e": 80,
+      "w": 50
+     },
+     {
+      "d": "2025-07-13",
+      "e": 90,
+      "w": 75
+     },
+     {
+      "d": "2025-08-27",
+      "e": 95,
+      "w": 95
+     },
+     {
+      "d": "2025-08-31",
+      "e": 100,
+      "w": 100
+     }
+    ],
+    "metaExpData": "",
+    "metaEscritaData": "",
+    "atualizadoEm": "2026-09-11T12:00:00Z",
+    "exemplo": true,
+    "matricula": "2200013",
+    "telefone": "",
+    "emailContato": ""
+   },
+   "o14": {
+    "nome": "Bruna Castilho",
+    "email": "bruna.castilho@exemplo.br",
+    "nivel": "Doutorado",
+    "programa": "PPG em Engenharia Ambiental",
+    "projetoId": "p4",
+    "tematica": "Monitoramento ambiental",
+    "titulo": "Redes de sensores eletroquímicos para bacias hidrográficas",
+    "coorientador": "",
+    "bolsa": "FAPESC – Doutorado",
+    "bolsaFim": "2030-02-28",
+    "inicio": "2026-03-01",
+    "prazo": "2030-02-28",
+    "fim": "",
+    "situacao": "Ativo",
+    "progExp": 10,
+    "progEscrita": 5,
+    "marcos": [
+     {
+      "id": "mo140",
+      "tipo": "Matrícula / início",
+      "prevista": "2026-03-01",
+      "realizada": "2026-03-01",
+      "obs": ""
+     },
+     {
+      "id": "mo141",
+      "tipo": "Proficiência em língua",
+      "prevista": "2026-12-15",
+      "realizada": "",
+      "obs": ""
+     },
+     {
+      "id": "mo142",
+      "tipo": "Créditos em disciplinas",
+      "prevista": "2027-07-31",
+      "realizada": "",
+      "obs": ""
+     },
+     {
+      "id": "mo143",
+      "tipo": "Exame de qualificação",
+      "prevista": "2028-03-31",
+      "realizada": "",
+      "obs": ""
+     },
+     {
+      "id": "mo144",
+      "tipo": "Defesa",
+      "prevista": "2030-02-10",
+      "realizada": "",
+      "obs": ""
+     }
+    ],
+    "historico": [
+     {
+      "d": "2026-04-15",
+      "e": 0,
+      "w": 0
+     },
+     {
+      "d": "2026-05-30",
+      "e": 5,
+      "w": 0
+     },
+     {
+      "d": "2026-07-14",
+      "e": 5,
+      "w": 0
+     },
+     {
+      "d": "2026-08-28",
+      "e": 5,
+      "w": 5
+     },
+     {
+      "d": "2026-09-11",
+      "e": 10,
+      "w": 5
+     }
+    ],
+    "metaExpData": "",
+    "metaEscritaData": "",
+    "atualizadoEm": "2026-09-11T12:00:00Z",
+    "exemplo": true,
+    "matricula": "2210014",
+    "telefone": "",
+    "emailContato": ""
+   }
+  },
+  "producoes": {
+   "pr01": {
+    "titulo": "Carbono ativado de caroço de açaí para remoção de diclofenaco",
+    "tipo": "Artigo em periódico",
+    "veiculo": "Journal of Environmental Chemical Engineering",
+    "status": "Publicado",
+    "data": "2025-10-14",
+    "autores": [
+     "o01",
+     "o07"
+    ],
+    "projetoId": "p1",
+    "doi": "",
+    "exemplo": true
+   },
+   "pr02": {
+    "titulo": "Cinética de adsorção de fármacos em efluente hospitalar real",
+    "tipo": "Artigo em periódico",
+    "veiculo": "Chemosphere",
+    "status": "Em revisão",
+    "data": "2026-06-02",
+    "autores": [
+     "o01"
+    ],
+    "projetoId": "p1",
+    "doi": "",
+    "exemplo": true
+   },
+   "pr03": {
+    "titulo": "Revisão: adsorventes carbonáceos para contaminantes emergentes",
+    "tipo": "Artigo de revisão",
+    "veiculo": "(a definir)",
+    "status": "Em redação",
+    "data": "",
+    "autores": [
+     "o01",
+     "o04"
+    ],
+    "projetoId": "p1",
+    "doi": "",
+    "exemplo": true
+   },
+   "pr04": {
+    "titulo": "Degradação fotocatalítica de atrazina: resultados preliminares",
+    "tipo": "Trabalho em congresso",
+    "veiculo": "Encontro Nacional de Química Ambiental",
+    "status": "Aceito",
+    "data": "2026-08-20",
+    "autores": [
+     "o04"
+    ],
+    "projetoId": "p1",
+    "doi": "",
+    "exemplo": true
+   },
+   "pr05": {
+    "titulo": "Recuperação de neodímio de ímãs NdFeB por lixiviação cítrica",
+    "tipo": "Artigo em periódico",
+    "veiculo": "Hydrometallurgy",
+    "status": "Em redação",
+    "data": "",
+    "autores": [
+     "o02",
+     "o11"
+    ],
+    "projetoId": "p2",
+    "doi": "",
+    "exemplo": true
+   },
+   "pr06": {
+    "titulo": "Resinas quelantes para cobre em lixiviados de PCI",
+    "tipo": "Artigo em periódico",
+    "veiculo": "Separation and Purification Technology",
+    "status": "Submetido",
+    "data": "2026-07-30",
+    "autores": [
+     "o05",
+     "o11"
+    ],
+    "projetoId": "p2",
+    "doi": "",
+    "exemplo": true
+   },
+   "pr07": {
+    "titulo": "Sorventes funcionalizados com fosfonatos para terras raras",
+    "tipo": "Artigo em periódico",
+    "veiculo": "Chemical Engineering Journal",
+    "status": "Publicado",
+    "data": "2026-03-05",
+    "autores": [
+     "o11"
+    ],
+    "projetoId": "p2",
+    "doi": "",
+    "exemplo": true
+   },
+   "pr08": {
+    "titulo": "Biossorção de cádmio por Ulva sp. modificada",
+    "tipo": "Artigo em periódico",
+    "veiculo": "Journal of Hazardous Materials",
+    "status": "Publicado",
+    "data": "2024-11-18",
+    "autores": [
+     "o03",
+     "o13"
+    ],
+    "projetoId": "p3",
+    "doi": "",
+    "exemplo": true
+   },
+   "pr09": {
+    "titulo": "Competição Pb/Cd em biossorventes de macroalgas: estudo em coluna",
+    "tipo": "Artigo em periódico",
+    "veiculo": "Science of the Total Environment",
+    "status": "Aceito",
+    "data": "2026-08-11",
+    "autores": [
+     "o03"
+    ],
+    "projetoId": "p3",
+    "doi": "",
+    "exemplo": true
+   },
+   "pr10": {
+    "titulo": "Eletrodos serigrafados modificados para Hg(II)",
+    "tipo": "Trabalho em congresso",
+    "veiculo": "Simpósio Brasileiro de Eletroquímica",
+    "status": "Submetido",
+    "data": "2026-08-25",
+    "autores": [
+     "o06",
+     "o14"
+    ],
+    "projetoId": "p4",
+    "doi": "",
+    "exemplo": true
+   },
+   "pr11": {
+    "titulo": "Ozonização catalítica de sulfametoxazol",
+    "tipo": "Artigo em periódico",
+    "veiculo": "Water Research",
+    "status": "Em revisão",
+    "data": "2026-05-10",
+    "autores": [
+     "o12"
+    ],
+    "projetoId": "p1",
+    "doi": "",
+    "exemplo": true
+   },
+   "pr12": {
+    "titulo": "Dissertação: Ozonização catalítica de antibióticos",
+    "tipo": "Dissertação",
+    "veiculo": "Repositório institucional",
+    "status": "Publicado",
+    "data": "2026-03-20",
+    "autores": [
+     "o12"
+    ],
+    "projetoId": "p1",
+    "doi": "",
+    "exemplo": true
+   }
+  },
+  "registos": {
+   "r01": {
+    "orientandoId": "o01",
+    "data": "2026-09-02",
+    "tipo": "Reunião",
+    "autor": "Orientador",
+    "texto": "Discutimos a estrutura do capítulo 4 (ensaios com efluente real). Resultados de ciclos de regeneração consistentes.",
+    "encaminhamentos": "Enviar rascunho do cap. 4 até 30/09; agendar pré-banca para dezembro.",
+    "alunoEmail": "ana.moura@exemplo.br",
+    "exemplo": true
+   },
+   "r02": {
+    "orientandoId": "o01",
+    "data": "2026-08-12",
+    "tipo": "Atualização do aluno",
+    "autor": "Orientando",
+    "texto": "Concluídos os ensaios de regeneração (5 ciclos). Parecer de revisão do artigo na Chemosphere recebido.",
+    "encaminhamentos": "Responder aos revisores em 3 semanas.",
+    "alunoEmail": "ana.moura@exemplo.br",
+    "exemplo": true
+   },
+   "r03": {
+    "orientandoId": "o02",
+    "data": "2026-08-28",
+    "tipo": "Reunião",
+    "autor": "Orientador",
+    "texto": "Qualificação não ocorreu no prazo: faltam dados de seletividade Nd/Fe. Texto do projeto em 60%.",
+    "encaminhamentos": "Definir nova data com a coordenação (limite: outubro). Priorizar ensaios de seletividade.",
+    "alunoEmail": "rafael.pires@exemplo.br",
+    "exemplo": true
+   },
+   "r04": {
+    "orientandoId": "o03",
+    "data": "2026-09-08",
+    "tipo": "Reunião",
+    "autor": "Orientador",
+    "texto": "Tese em revisão final dos capítulos 2 e 3. Artigo do estudo em coluna aceito.",
+    "encaminhamentos": "Sugerir nomes para a banca; reservar data de defesa em 10/12.",
+    "alunoEmail": "juliana.kato@exemplo.br",
+    "exemplo": true
+   },
+   "r05": {
+    "orientandoId": "o04",
+    "data": "2026-08-25",
+    "tipo": "Reunião",
+    "autor": "Orientador",
+    "texto": "Resumo aceito no congresso. Projeto de qualificação ainda sem revisão bibliográfica completa.",
+    "encaminhamentos": "Entregar texto de qualificação até 30/09 para leitura.",
+    "alunoEmail": "lucas.dias@exemplo.br",
+    "exemplo": true
+   },
+   "r06": {
+    "orientandoId": "o05",
+    "data": "2026-09-04",
+    "tipo": "Reunião",
+    "autor": "Orientador",
+    "texto": "Bolsa encerrada em julho; aluna trabalhando meio período. Escrita da dissertação em 55%.",
+    "encaminhamentos": "Cronograma semanal de escrita; confirmar banca para 27/11.",
+    "alunoEmail": "mariana.costa@exemplo.br",
+    "exemplo": true
+   },
+   "r07": {
+    "orientandoId": "o06",
+    "data": "2026-06-19",
+    "tipo": "Reunião",
+    "autor": "Orientador",
+    "texto": "Dificuldade de conciliar trabalho e laboratório. Síntese de eletrodos com baixa reprodutibilidade.",
+    "encaminhamentos": "Definir dois dias fixos por semana no laboratório; revisar protocolo com Bruna.",
+    "alunoEmail": "pedro.sa@exemplo.br",
+    "exemplo": true
+   },
+   "r08": {
+    "orientandoId": "o07",
+    "data": "2026-08-27",
+    "tipo": "Reunião",
+    "autor": "Orientador",
+    "texto": "Apresentação no seminário de IC muito boa. Bolsa renovada para 2026/27.",
+    "encaminhamentos": "Novo plano de trabalho: isotermas com mistura de fármacos.",
+    "alunoEmail": "camila.rocha@exemplo.br",
+    "exemplo": true
+   },
+   "r09": {
+    "orientandoId": "o08",
+    "data": "2026-09-03",
+    "tipo": "Reunião",
+    "autor": "Orientador",
+    "texto": "Integração ao laboratório: treinamento de segurança concluído e acesso ao FTIR solicitado.",
+    "encaminhamentos": "Acompanhar Juliana nas análises BET.",
+    "alunoEmail": "gabriel.tavares@exemplo.br",
+    "exemplo": true
+   },
+   "r10": {
+    "orientandoId": "o09",
+    "data": "2026-07-30",
+    "tipo": "Reunião",
+    "autor": "Orientador",
+    "texto": "Campanha de coleta de julho concluída (12 pontos). Relatório parcial por iniciar.",
+    "encaminhamentos": "Entregar relatório parcial até 01/09.",
+    "alunoEmail": "leticia.amaral@exemplo.br",
+    "exemplo": true
+   },
+   "r11": {
+    "orientandoId": "o10",
+    "data": "2026-08-14",
+    "tipo": "Reunião",
+    "autor": "Orientador",
+    "texto": "Plano de atividades assinado. Início dos ensaios acompanhando o Rafael.",
+    "encaminhamentos": "Caderno de laboratório atualizado semanalmente.",
+    "alunoEmail": "thiago.brandao@exemplo.br",
+    "exemplo": true
+   },
+   "r12": {
+    "orientandoId": "o11",
+    "data": "2026-09-01",
+    "tipo": "Reunião",
+    "autor": "Orientador",
+    "texto": "Artigo da Mariana submetido. Discutida a renovação da bolsa FAPESC (vence em novembro).",
+    "encaminhamentos": "Preparar relatório e pedido de renovação até 15/10.",
+    "alunoEmail": "helena.vasconcelos@exemplo.br",
+    "exemplo": true
+   },
+   "r13": {
+    "orientandoId": "o14",
+    "data": "2026-08-21",
+    "tipo": "Reunião",
+    "autor": "Orientador",
+    "texto": "Revisão bibliográfica em andamento; proposta de rede de sensores discutida com o grupo.",
+    "encaminhamentos": "Matricular-se no exame de proficiência de dezembro.",
+    "alunoEmail": "bruna.castilho@exemplo.br",
+    "exemplo": true
+   },
+   "r14": {
+    "orientandoId": "o02",
+    "data": "2026-07-15",
+    "tipo": "Atualização do aluno",
+    "autor": "Orientando",
+    "texto": "ICP-OES em manutenção por duas semanas; ensaios de seletividade atrasados.",
+    "encaminhamentos": "",
+    "alunoEmail": "rafael.pires@exemplo.br",
+    "exemplo": true
+   }
+  },
+  "notas": {
+   "o02": {
+    "texto": "Acompanhar de perto: risco de nova prorrogação. Conversar sobre carga de trabalho.",
+    "exemplo": true
+   },
+   "o06": {
+    "texto": "Aluno sem bolsa e com trabalho externo — avaliar pedido de bolsa na próxima chamada do PPG.",
+    "exemplo": true
+   }
+  },
+  "atualizacoes": {
+   "uexemplo1": {
+    "orientandoId": "o04",
+    "alunoEmail": "lucas.dias@exemplo.br",
+    "nomeInformado": "Lucas Ferreira Dias",
+    "enviadoEm": "2026-09-10T14:00:00Z",
+    "progExp": 45,
+    "progEscrita": 25,
+    "marcoId": "",
+    "marcoTipo": "",
+    "marcoData": "",
+    "prodStatus": null,
+    "prodNova": {
+     "titulo": "Fotocatálise de atrazina com TiO2 dopado com nitrogênio",
+     "tipo": "Artigo em periódico",
+     "status": "Em redação",
+     "veiculo": ""
+    },
+    "texto": "(EXEMPLO) Concluí a série de ensaios a pH 5 e 7. A revisão bibliográfica do projeto de qualificação está em 70%."
+   }
+  }
+ }
+}

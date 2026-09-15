@@ -1,0 +1,112 @@
+rules_version = '2';
+
+// ============================================================================
+//  REGRAS DE SEGURANÇA DO CADERNO DE ORIENTAÇÃO
+//  Cole este texto em Firebase → Firestore Database → Regras → Publicar.
+//  Troque o e-mail abaixo se o orientador usar outro endereço (tem de ser
+//  igual ao ORIENTADOR_EMAIL de docs/config.js).
+// ============================================================================
+
+service cloud.firestore {
+  match /databases/{database}/documents {
+
+    function orientadorEmail() { return 'bruno.henriques@ufsc.br'; }
+
+    // Sessão iniciada e e-mail confirmado.
+    function autenticado() {
+      return request.auth != null && request.auth.token.email_verified == true;
+    }
+    function meuEmail() { return request.auth.token.email.lower(); }
+    function ehOrientador() { return autenticado() && meuEmail() == orientadorEmail(); }
+    function acesso() { return /databases/$(database)/documents/config/acesso; }
+    // Orientador ou co-editor (lista mantida pelo orientador em Configurações).
+    function ehEditor() {
+      return ehOrientador() ||
+        (autenticado() && exists(acesso()) && meuEmail() in get(acesso()).data.editores);
+    }
+
+    // Lista de co-editores: só o orientador altera; só editores leem.
+    match /config/acesso {
+      allow read: if ehEditor();
+      allow write: if ehOrientador();
+    }
+    // Listas e parâmetros (níveis, marcos, alertas): todos leem, editores alteram.
+    match /config/{docId} {
+      allow read: if autenticado() && docId != 'acesso';
+      allow write: if ehEditor() && docId != 'acesso';
+    }
+
+    match /projetos/{id} {
+      allow read: if autenticado();
+      allow write: if ehEditor();
+    }
+    match /producoes/{id} {
+      allow read: if autenticado();
+      allow write: if ehEditor();
+    }
+
+    // Fichas: cada aluno lê apenas a ficha com o seu e-mail; só editores alteram.
+    match /orientandos/{id} {
+      allow read: if ehEditor() || (autenticado() && resource.data.email == meuEmail());
+      allow create, delete: if ehEditor();
+      // O aluno altera apenas os seus dados de contacto, na sua própria ficha.
+      allow update: if ehEditor() || (
+        autenticado()
+        && resource.data.email == meuEmail()
+        && request.resource.data.email == resource.data.email
+        && request.resource.data.diff(resource.data).affectedKeys().hasOnly(['matricula', 'programa', 'telefone', 'emailContato', 'atualizadoEm'])
+        && request.resource.data.matricula is string && request.resource.data.matricula.size() <= 40
+        && request.resource.data.programa is string && request.resource.data.programa.size() <= 120
+        && request.resource.data.telefone is string && request.resource.data.telefone.size() <= 40
+        && request.resource.data.emailContato is string && request.resource.data.emailContato.size() <= 120
+      );
+    }
+
+    // Registos de reuniões: o aluno lê só os seus; só editores escrevem.
+    match /registos/{id} {
+      allow read: if ehEditor() || (autenticado() && resource.data.alunoEmail == meuEmail());
+      allow write: if ehEditor();
+    }
+
+    // Notas privadas do orientador.
+    match /notas/{id} {
+      allow read, write: if ehEditor();
+    }
+
+    // Atualizações enviadas pelos alunos, à espera de aprovação.
+    match /atualizacoes/{id} {
+      allow read: if ehEditor() || (autenticado() && resource.data.alunoEmail == meuEmail());
+      allow create: if ehEditor() || (
+        autenticado()
+        && request.resource.data.alunoEmail == meuEmail()
+        && get(/databases/$(database)/documents/orientandos/$(request.resource.data.orientandoId)).data.email == meuEmail()
+        && request.resource.data.keys().hasOnly(['orientandoId', 'alunoEmail', 'nomeInformado', 'enviadoEm', 'progExp',
+             'progEscrita', 'marcoId', 'marcoTipo', 'marcoData', 'prodStatus', 'prodNova', 'anexos', 'texto'])
+        && request.resource.data.texto is string && request.resource.data.texto.size() <= 5000
+      );
+      allow update: if ehEditor();
+      allow delete: if ehEditor() || (autenticado() && resource.data.alunoEmail == meuEmail());
+    }
+
+    // Fila de e-mails (lida pela extensão Trigger Email ou pelo script do Google).
+    match /mail/{id} {
+      allow read, update, delete: if ehEditor();
+      allow create: if ehEditor() || (
+        autenticado()
+        && request.resource.data.to.size() == 1 && request.resource.data.to[0] == orientadorEmail()
+        && request.resource.data.message.text is string && request.resource.data.message.text.size() <= 4000
+      );
+    }
+
+    // Marcadores internos (ex.: data da última geração de lembretes).
+    match /sistema/{id} {
+      allow read: if autenticado();
+      allow write: if ehEditor();
+    }
+
+    // Tudo o resto: fechado.
+    match /{outro=**} {
+      allow read, write: if false;
+    }
+  }
+}
