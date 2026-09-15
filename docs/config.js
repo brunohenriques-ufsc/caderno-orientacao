@@ -9,12 +9,12 @@
 //    Estes valores NÃO são secretos: a proteção dos dados é feita pelas
 //    regras de segurança (ficheiro firestore.rules).
 export const FIREBASE_CONFIG = {
-apikey: "AIzaSyC4qlRzQvdEDGl_PEgyt3Sc4guR4wIwmqY",
-authDomain: "caderno-orientacao-56ab3.firebaseapp.com", 
-projectId: "caderno-orientacao-56ab3", 
-storageBucket: "caderno-orientacao-56ab3.firebasestorage.app", 
-messagingSenderId: "1065965615801", 
-appId: "1:1065965615801:web: 2421d0b4f46bfc113af968"
+  apiKey: "AIzaSyC4qlRzQvdEDGl_PEgyt3Sc4guR4wIwmqY",
+  authDomain: "caderno-orientacao-56ab3.firebaseapp.com",
+  projectId: "caderno-orientacao-56ab3",
+  storageBucket: "caderno-orientacao-56ab3.firebasestorage.app",
+  messagingSenderId: "1065965615801",
+  appId: "1:1065965615801:web: 2421d0b4f46bfc113af968"
 };
 
 // 2) E-mail do orientador (dono do Caderno). Tem de ser o MESMO e-mail
