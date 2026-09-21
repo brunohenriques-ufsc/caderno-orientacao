@@ -80,6 +80,17 @@ const curto = n => S.cfg.niveis[n]?.curto || n;
 const lv = n => `<span class="lv" style="--c:${corNivel(n)}">${esc(curto(n))}</span>`;
 const ativos = () => S.orientandos.filter(o => o.situacao === "Ativo");
 const pendentesDe = id => S.atualizacoes.filter(u => u.orientandoId === id);
+const coEmails = o => (o?.coorientadoresEmails || []).map(e => String(e).toLowerCase());
+const souCoori = o => coEmails(o).includes(S.email);
+const minhasFichas = () => S.orientandos.filter(o => (o.email || "").toLowerCase() === S.email);
+const meusCoorientandos = () => S.orientandos.filter(o => souCoori(o) && (o.email || "").toLowerCase() !== S.email);
+const listaEmails = t => [...new Set(String(t || "").split(/[\s,;]+/).map(x => x.trim().toLowerCase()).filter(x => /^[^@\s]+@[^@\s]+\.[^@\s]+$/.test(x)))];
+function idade(nasc) {
+  if (!nasc) return null;
+  const [y, m, d] = nasc.split("-").map(Number), [ty, tm, td] = todayISO.split("-").map(Number);
+  return ty - y - ((tm < m || (tm === m && td < d)) ? 1 : 0);
+}
+const nascTxt = n => n ? `${fmt(n)} (${idade(n)} anos)` : "—";
 const producoesDe = id => S.producoes.filter(p => (p.autores || []).includes(id));
 const nivelCfg = o => S.cfg.niveis[o.nivel] || { duracao: 24, metaExp: 0.75, inicioEscrita: 0.5, marcos: [] };
 function tematicas() { const s = new Set(); S.projetos.forEach(p => p.tematica && s.add(p.tematica)); S.orientandos.forEach(o => o.tematica && s.add(o.tematica)); return [...s].sort((a, b) => a.localeCompare(b, "pt")); }
@@ -257,7 +268,8 @@ function telaAuth(modo, msg = "") {
     <button class="btn primary" id="a-go">Já confirmei</button>
     <div class="links"><button id="a-reenviar">Reenviar e-mail</button><button id="a-sair">Sair</button></div>`;
   app.innerHTML = `<div class="auth"><h1>${esc(NOME_LABORATORIO)}</h1><h2 style="font-size:17px">${titulo}</h2>${corpo}<p class="msg-err" id="a-msg">${esc(msg)}</p>
-    <p class="muted small" style="margin:0">Projeto Firebase: <span class="mono">${esc(FIREBASE_CONFIG.projectId || "(não configurado)")}</span></p></div>`;
+    <p class="muted small" style="margin:0">Projeto Firebase: <span class="mono">${esc(FIREBASE_CONFIG.projectId || "(não configurado)")}</span>
+      · <a href="diagnostico.html" style="color:var(--accent)">testar a configuração</a></p></div>`;
   app.querySelectorAll("[data-modo]").forEach(b => b.onclick = () => telaAuth(b.dataset.modo));
   const m = $("#a-msg"), v = id => ($("#" + id)?.value || "").trim();
   const ERROS = {
@@ -303,7 +315,9 @@ function telaAuth(modo, msg = "") {
 async function aoAutenticar(u) {
   S.unsubs.forEach(f => { try { f(); } catch (_) {} }); S.unsubs = []; S.loaded = {};
   Object.assign(S, { projetos: [], orientandos: [], producoes: [], registos: [], atualizacoes: [], notas: {} });
-  S.user = u;
+  S.user = u; S.vistaAluno = null; S.drawer = null;
+  const raiz = $("#app"); if (raiz.querySelector("main")) raiz.innerHTML = "";   // reconstruir o cabeçalho para o novo utilizador
+  $("#drawer-root").innerHTML = "";
   if (!u) return telaAuth("login");
   if (!u.verified) return telaAuth("verificar");
   S.email = u.email;
@@ -329,8 +343,17 @@ function subscrever() {
     if (NOTIFICACOES) { on("mail", null, "mail"); talvezGerarLembretes(); }
     if (isDono()) S.unsubs.push(D.watchDoc("config", "acesso", d => { S.acesso = d || { editores: [] }; }, () => {}));
   } else {
-    on("orientandos", ["email", "==", S.email], "orientandos");
-    on("registos", ["alunoEmail", "==", S.email], "registos");
+    // o utilizador pode ser orientando, coorientador, ou as duas coisas
+    const juntar = (a, b) => { const m = new Map(); [...a, ...b].forEach(x => m.set(x.id, x)); return [...m.values()]; };
+    const par = (col, filtros, key) => {
+      const partes = filtros.map(() => []), ok = filtros.map(() => false);
+      filtros.forEach((f, i) => S.unsubs.push(D.watch(col, f, docs => {
+        partes[i] = docs; ok[i] = true; S[key] = juntar(partes[0], partes[1] || []);
+        if (ok.every(Boolean)) S.loaded[key] = true; render();
+      }, e => { console.warn(col, e); ok[i] = true; if (ok.every(Boolean)) S.loaded[key] = true; render(); })));
+    };
+    par("orientandos", [["email", "==", S.email], ["coorientadoresEmails", "array-contains", S.email]], "orientandos");
+    par("registos", [["alunoEmail", "==", S.email], ["coorientadoresEmails", "array-contains", S.email]], "registos");
     on("atualizacoes", ["alunoEmail", "==", S.email], "atualizacoes");
   }
 }
@@ -357,7 +380,7 @@ function render() {
     app.innerHTML = `<header class="top">
       <div class="brand"><h1>${esc(NOME_LABORATORIO)}</h1><p id="subtitle"></p></div>
       <div style="margin-left:auto;display:flex;flex-direction:column;align-items:flex-end">
-        <div class="userbox"><span>${esc(S.user.nome || S.email)}</span><span class="pill ${isEd() ? "acc" : ""}">${isEd() ? (isDono() ? "orientador" : "co-editor") : "orientando"}</span><button class="btn ghost small" id="sair">Sair</button></div>
+        <div class="userbox"><span>${esc(S.user.nome || S.email)}</span><span class="pill ${isEd() ? "acc" : ""}" id="papel-pill">${isEd() ? (isDono() ? "orientador" : "co-editor") : "orientando"}</span><button class="btn ghost small" id="sair">Sair</button></div>
         ${isEd() ? `<nav class="tabs" role="tablist" aria-label="Secções">${VIEWS_ED.map(([k, t]) => `<button role="tab" data-view="${k}">${t}${k === "atualizacoes" ? ` <span id="atu-count" class="count"></span>` : ""}</button>`).join("")}</nav>` : ""}
       </div></header><main id="main"></main>`;
     $("#sair").onclick = () => D.sair();
@@ -365,6 +388,8 @@ function render() {
   }
   app.querySelectorAll("nav.tabs button").forEach(b => b.setAttribute("aria-selected", String(b.dataset.view === S.view)));
   if ($("#atu-count")) $("#atu-count").textContent = S.atualizacoes.length ? String(S.atualizacoes.length) : "";
+  if (!isEd() && $("#papel-pill")) { const a = minhasFichas().length, c = meusCoorientandos().length;
+    $("#papel-pill").textContent = a && c ? "orientando · coorientador" : c ? "coorientador" : "orientando"; }
   const n = ativos().length;
   $("#subtitle").textContent = isEd() ? `${n} orientando${n === 1 ? "" : "s"} ativo${n === 1 ? "" : "s"} · ${S.projetos.length} projeto${S.projetos.length === 1 ? "" : "s"} · hoje ${fmt(todayISO)}` : `Hoje ${fmt(todayISO)}`;
   const main = $("#main");
@@ -414,6 +439,8 @@ function vPainel() {
     <div class="stat"><span class="k">Projeção em risco</span><span class="v ${emRisco ? "warn" : ""}">${emRisco}</span><span class="d">ritmo atual não cumpre as metas</span></div>
     <div class="stat"><span class="k">Marcos atrasados</span><span class="v ${atrasados ? "crit" : ""}">${atrasados}</span><span class="d">data prevista já passou</span></div>
     <div class="stat"><span class="k">Defesas em 6 meses</span><span class="v">${defesas.length}</span><span class="d">${defesas.map(x => esc(x.o.nome.split(" ")[0])).join(", ") || "nenhuma prevista"}</span></div>
+    ${(() => { const mes = todayISO.slice(5, 7), an = at.filter(o => o.nascimento && o.nascimento.slice(5, 7) === mes).sort((a, b) => a.nascimento.slice(8).localeCompare(b.nascimento.slice(8)));
+      return `<div class="stat"><span class="k">Aniversários em ${MESES[Number(mes) - 1]}</span><span class="v">${an.length}</span><span class="d">${an.map(o => `${esc(o.nome.split(" ")[0])} (${o.nascimento.slice(8)})`).join(", ") || "nenhum este mês"}</span></div>`; })()}
     <div class="stat"><span class="k">Publicações em ${ano}</span><span class="v">${pubAno}</span><span class="d">${S.producoes.filter(p => p.status !== "Publicado").length} em andamento</span></div>
   </section>
   <div class="grid g2" style="margin-bottom:18px">
@@ -596,7 +623,7 @@ async function aprovar(id, btn) {
   if (u.prodNova) ops.push({ op: "set", col: "producoes", id: D.novoId("producoes"), dados: limpo({ titulo: u.prodNova.titulo, tipo: u.prodNova.tipo || "Outro",
     status: u.prodNova.status || "Em redação", veiculo: u.prodNova.veiculo || "", local: u.prodNova.local || "", descricao: u.prodNova.descricao || "",
     data: u.prodNova.data || (u.prodNova.status === "Em redação" ? "" : todayISO), autores: [o.id], projetoId: o.projetoId || "", doi: u.prodNova.doi || "", anexos: u.anexos || [] }) });
-  ops.push({ op: "set", col: "registos", id: D.novoId("registos"), dados: { orientandoId: o.id, alunoEmail: o.email || "", data: (u.enviadoEm || todayISO).slice(0, 10), tipo: "Atualização do aluno", autor: u.nomeInformado || "Orientando",
+  ops.push({ op: "set", col: "registos", id: D.novoId("registos"), dados: { orientandoId: o.id, alunoEmail: o.email || "", coorientadoresEmails: coEmails(o), data: (u.enviadoEm || todayISO).slice(0, 10), tipo: "Atualização do aluno", autor: u.nomeInformado || "Orientando",
     texto: [u.texto, muds.length ? "Mudanças aprovadas: " + muds.join("; ") : ""].filter(Boolean).join("\n"), encaminhamentos: "" } });
   ops.push({ op: "delete", col: "atualizacoes", id });
   const ok = await write(() => D.lote(ops), `Ficha de ${o.nome} atualizada.`);
@@ -656,9 +683,9 @@ function csv(rows) { return "﻿" + rows.map(r => r.map(v => { const s = String(
 function exportarCSV(k) {
   const P = id => proj(id)?.sigla || "";
   let rows;
-  if (k === "orientandos") rows = [["Nome", "E-mail", "Nível", "Situação", "Programa", "Projeto", "Temática", "Título", "Coorientador", "Bolsa", "Fim da bolsa", "Início", "Término previsto", "Término real", "Progresso experimental (%)", "Progresso escrita (%)", "Conclusão projetada", "Estado da projeção", "Última reunião", "Alertas"],
+  if (k === "orientandos") rows = [["Nome", "E-mail", "Matrícula", "Nascimento", "Celular", "Nível", "Situação", "Programa", "Projeto", "Temática", "Título", "Coorientador", "Coorientadores (e-mails)", "Bolsa", "Fim da bolsa", "Início", "Término previsto", "Término real", "Progresso experimental (%)", "Progresso escrita (%)", "Conclusão projetada", "Estado da projeção", "Última reunião", "Alertas"],
     ...S.orientandos.map(o => { const Pj = o.situacao === "Ativo" ? projecao(o) : null, pe = piorEstado(Pj);
-      return [o.nome, o.email, o.nivel, o.situacao, o.programa, P(o.projetoId), o.tematica, o.titulo, o.coorientador, o.bolsa, o.bolsaFim ? fmt(o.bolsaFim) : "", fmt(o.inicio), fmt(prazoDe(o)), o.fim ? fmt(o.fim) : "", pct(o.progExp), pct(o.progEscrita), Pj?.fimProj ? fmt(Pj.fimProj) : "", pe ? ST_TXT[pe][0] : "", ultimoRegisto(o.id) ? fmt(ultimoRegisto(o.id)) : "", alertas(o).map(a => a.txt).join(" | ")]; })];
+      return [o.nome, o.email, o.matricula || "", o.nascimento ? fmt(o.nascimento) : "", o.telefone || "", o.nivel, o.situacao, o.programa, P(o.projetoId), o.tematica, o.titulo, o.coorientador, coEmails(o).join(", "), o.bolsa, o.bolsaFim ? fmt(o.bolsaFim) : "", fmt(o.inicio), fmt(prazoDe(o)), o.fim ? fmt(o.fim) : "", pct(o.progExp), pct(o.progEscrita), Pj?.fimProj ? fmt(Pj.fimProj) : "", pe ? ST_TXT[pe][0] : "", ultimoRegisto(o.id) ? fmt(ultimoRegisto(o.id)) : "", alertas(o).map(a => a.txt).join(" | ")]; })];
   if (k === "marcos") rows = [["Orientando", "Nível", "Projeto", "Marco", "Data prevista", "Data realizada", "Status", "Observações"], ...S.orientandos.flatMap(o => (o.marcos || []).map(m => [o.nome, o.nivel, P(o.projetoId), m.tipo, fmt(m.prevista), m.realizada ? fmt(m.realizada) : "", MS_LABEL[marcoStatus(m)], m.obs || ""]))];
   if (k === "producao") rows = [["Título", "Tipo", "Periódico / evento", "Status", "Data", "Autores (orientandos)", "Projeto", "DOI / link"], ...S.producoes.map(p => [p.titulo, p.tipo, p.veiculo, p.status, p.data ? fmt(p.data) : "", (p.autores || []).map(a => ori(a)?.nome || a).join(", "), P(p.projetoId), p.doi || ""])];
   if (k === "registos") rows = [["Data", "Orientando", "Tipo", "Resumo", "Encaminhamentos", "Registado por"], ...S.registos.slice().sort((a, b) => b.data.localeCompare(a.data)).map(r => [fmt(r.data), ori(r.orientandoId)?.nome || "", r.tipo, r.texto, r.encaminhamentos, r.autor])];
@@ -880,10 +907,18 @@ function bindChart(root) {
    PÁGINA DO ORIENTANDO ("O meu trabalho")
    ========================================================================= */
 function vMeu() {
-  const minhas = S.orientandos.slice().sort((a, b) => (a.situacao === "Ativo" ? 0 : 1) - (b.situacao === "Ativo" ? 0 : 1));
-  if (!minhas.length) return `<section class="panel" style="max-width:640px"><h2>Ainda não há ficha associada a ${esc(S.email)}</h2>
-    <p>Peça ao seu orientador para cadastrar este e-mail na sua ficha. Assim que o fizer, esta página mostra o seu trabalho automaticamente.</p></section>`;
-  return `<div class="page">${minhas.map(o => {
+  const minhas = minhasFichas().sort((a, b) => (a.situacao === "Ativo" ? 0 : 1) - (b.situacao === "Ativo" ? 0 : 1));
+  const coori = meusCoorientandos().sort((a, b) => a.nome.localeCompare(b.nome, "pt"));
+  if (!minhas.length && !coori.length) return `<section class="panel" style="max-width:640px"><h2>Ainda não há ficha associada a ${esc(S.email)}</h2>
+    <p>Se é orientando, peça ao orientador para cadastrar este e-mail na sua ficha. Se é coorientador, peça-lhe para o indicar no campo “E-mails dos coorientadores” da ficha do seu coorientando. Assim que o fizer, esta página mostra tudo automaticamente.</p></section>`;
+  if (!S.vistaAluno) S.vistaAluno = minhas.length ? "meu" : "coori";
+  if (!minhas.length) S.vistaAluno = "coori";
+  if (!coori.length) S.vistaAluno = "meu";
+  const abas = minhas.length && coori.length ? `<div class="filters"><span class="seg" role="group" aria-label="Ver">
+      <button data-vista="meu" aria-pressed="${S.vistaAluno === "meu"}">O meu trabalho</button>
+      <button data-vista="coori" aria-pressed="${S.vistaAluno === "coori"}">Coorientandos (${coori.length})</button></span></div>` : "";
+  if (S.vistaAluno === "coori") return abas + vCoorientandos(coori);
+  return abas + `<div class="page">${minhas.map(o => {
     const p = proj(o.projetoId), pend = pendentesDe(o.id), regs = S.registos.filter(r => r.orientandoId === o.id).sort((a, b) => b.data.localeCompare(a.data));
     const marcos = (o.marcos || []).slice().sort((x, y) => (x.prevista || "9").localeCompare(y.prevista || "9")), prods = producoesDe(o.id);
     return `<section class="panel"><h2 style="font-size:22px">${esc(o.nome)} ${lv(o.nivel)} ${p ? `<span class="pill acc">${esc(p.sigla)}</span>` : ""}</h2>
@@ -891,7 +926,8 @@ function vMeu() {
     <section class="panel"><h2>Os meus dados <span class="sub">preencha e guarde — estes são os campos que pode alterar diretamente</span></h2>
       <div class="form">
         ${field("Matrícula", "d-mat-" + o.id, o.matricula)}
-        ${field("Curso / programa", "d-prog-" + o.id, o.programa)}
+        ${field("Data de nascimento", "d-nasc-" + o.id, o.nascimento, "date")}
+        ${field("Curso / programa", "d-prog-" + o.id, o.programa, "text", true)}
         ${field("Celular / WhatsApp (opcional)", "d-tel-" + o.id, o.telefone, "tel", false, 'placeholder="(48) 9 9999-9999"')}
         ${field("E-mail de contacto alternativo (opcional)", "d-econ-" + o.id, o.emailContato, "email")}
         <div class="actions full"><button class="btn primary" data-savedata="${esc(o.id)}">Guardar os meus dados</button>
@@ -918,6 +954,50 @@ function vMeu() {
       <dt>Temática</dt><dd>${esc(o.tematica || "—")}</dd><dt>Coorientação</dt><dd>${esc(o.coorientador || "—")}</dd>
       <dt>Bolsa / vínculo</dt><dd>${esc(o.bolsa || "—")}${o.bolsaFim ? ` <span class="date">até ${fmt(o.bolsaFim)}</span>` : ""}</dd>
       <dt>Ciclo</dt><dd><span class="date">${fmt(o.inicio)} → ${fmt(prazoDe(o))}</span></dd></dl></section>`; }).join("")}</div>`;
+}
+
+/* =========================================================================
+   VISTA DO COORIENTADOR (leitura + registo de reuniões de coorientação)
+   ========================================================================= */
+function vCoorientandos(lista) {
+  return `<div class="page">
+    <div class="banner">Como coorientador, vê o andamento, os marcos, a produção e as reuniões destes orientandos, e pode registar as suas reuniões de coorientação. As alterações à ficha e as aprovações continuam com o orientador.</div>
+    ${lista.map(o => {
+      const p = proj(o.projetoId), regs = S.registos.filter(r => r.orientandoId === o.id).sort((a, b) => b.data.localeCompare(a.data));
+      const marcos = (o.marcos || []).slice().sort((x, y) => (x.prevista || "9").localeCompare(y.prevista || "9")), prods = producoesDe(o.id), k = o.id;
+      return `<section class="panel"><h2 style="font-size:22px">${esc(o.nome)} ${lv(o.nivel)} ${p ? `<span class="pill acc">${esc(p.sigla)}</span>` : ""}
+          <span class="pill ${o.situacao === "Ativo" ? "ok" : ""}">${esc(o.situacao)}</span></h2>
+        <p class="muted" style="margin-top:-6px">${esc(o.titulo || "")}</p>
+        <dl class="kv" style="margin-bottom:14px">
+          <dt>Programa / curso</dt><dd>${esc(o.programa || "—")}</dd>
+          <dt>Ciclo</dt><dd><span class="date">${fmt(o.inicio)} → ${fmt(prazoDe(o))}</span></dd>
+          <dt>Contacto</dt><dd>${esc(o.email || "")}${o.telefone ? " · " + esc(o.telefone) : ""}</dd>
+          <dt>Bolsa / vínculo</dt><dd>${esc(o.bolsa || "—")}${o.bolsaFim ? ` <span class="date">até ${fmt(o.bolsaFim)}</span>` : ""}</dd></dl>
+        ${painelProgresso(o)}</section>
+      <div class="grid g2">
+        <section class="panel"><h2>Marcos do ciclo de estudos</h2><div class="list">${marcos.map(m => { const st = marcoStatus(m); return `<div class="li" style="cursor:default"><span>${esc(m.tipo)}</span>
+          <span class="pill ${MS_PILL[st]}">${m.realizada ? `feito ${fmt(m.realizada)}` : `${MS_LABEL[st].toLowerCase()} · ${fmt(m.prevista)}`}</span></div>`; }).join("") || `<p class="empty">Sem marcos cadastrados.</p>`}</div></section>
+        <section class="panel"><h2>Produção</h2>${prods.length ? `<div class="list">${prods.map(x => `<div class="li" style="cursor:default"><span><b>${esc(x.titulo)}</b>
+          <div class="muted small"><i>${esc(x.veiculo || "")}</i> · ${esc(x.tipo)}${x.doi ? " · " + esc(x.doi) : ""}</div>
+          ${(x.anexos || []).length ? anexosHTML("c-" + x.id, x.anexos, false) : ""}</span><span class="pill ${x.status === "Publicado" ? "ok" : ""}">${esc(x.status)}</span></div>`).join("")}</div>` : `<p class="empty">Nenhuma produção cadastrada.</p>`}</section>
+      </div>
+      <section class="panel"><h2>Reuniões e registos</h2>
+        <div class="form" style="margin-bottom:14px">
+          <label>Data<input type="date" id="c-data-${k}" value="${todayISO}"></label><span></span>
+          <label class="full">Reunião de coorientação — o que foi discutido<textarea id="c-texto-${k}" placeholder="Resultados, dificuldades, decisões…"></textarea></label>
+          <label class="full">Encaminhamentos<input type="text" id="c-enc-${k}" placeholder="Próximos passos e prazos"></label>
+          <div class="actions full"><button class="btn primary" data-coreg="${esc(o.id)}">Registar</button><span class="muted small">Fica visível para o orientador e para o orientando.</span></div></div>
+        ${regs.map(r => `<div class="reg"><div class="h"><span class="date">${fmt(r.data)}</span><span class="pill">${esc(r.tipo)}</span><span>${esc(r.autor || "")}</span></div>
+          <p>${esc(r.texto)}</p>${r.encaminhamentos ? `<div class="enc"><b>Encaminhamentos:</b> ${esc(r.encaminhamentos)}</div>` : ""}</div>`).join("") || `<p class="empty">Nenhum registo ainda.</p>`}</section>`; }).join("")}
+  </div>`;
+}
+async function registarCoorientacao(id) {
+  const o = ori(id), g = k => ($(`#c-${k}-${id}`)?.value ?? "").trim();
+  if (!o) return;
+  if (!g("texto")) { $(`#c-texto-${id}`).focus(); toast("Escreva o que foi discutido."); return; }
+  await write(() => D.gravar("registos", D.novoId("registos"), { orientandoId: o.id, alunoEmail: o.email || "", coorientadoresEmails: coEmails(o),
+    data: g("data") || todayISO, tipo: "Reunião de coorientação", texto: g("texto"), encaminhamentos: g("enc"),
+    autor: S.user.nome || S.email, autorEmail: S.email }), "Registo adicionado.");
 }
 function formProdAluno(o) {
   const k = o.id, ch = "prodaluno-" + o.id;
@@ -1128,13 +1208,15 @@ function bindMain() {
   m.querySelectorAll("[data-cancel-upd]").forEach(b => b.onclick = () => write(() => D.apagar("atualizacoes", b.dataset.cancelUpd), "Envio cancelado."));
   m.querySelectorAll("[data-send]").forEach(b => b.onclick = () => enviarAtualizacao(b.dataset.send));
   m.querySelectorAll("[data-sendprod]").forEach(b => b.onclick = () => enviarProducao(b.dataset.sendprod));
+  m.querySelectorAll("[data-vista]").forEach(b => b.onclick = () => { S.vistaAluno = b.dataset.vista; render(); });
+  m.querySelectorAll("[data-coreg]").forEach(b => b.onclick = () => registarCoorientacao(b.dataset.coreg));
   m.querySelectorAll("[data-mailfila]").forEach(b => b.onclick = () => { const x = S.mail.find(y => y.id === b.dataset.mailfila); if (!x) return;
     location.href = `mailto:${encodeURIComponent((x.to || []).join(","))}?subject=${encodeURIComponent(x.message?.subject || "")}&body=${encodeURIComponent(x.message?.text || "")}`; });
   m.querySelectorAll("[data-rmmail]").forEach(b => b.onclick = () => write(() => D.apagar("mail", b.dataset.rmmail), "Removido da fila."));
   m.querySelectorAll("[data-anexosbox]").forEach(box => bindAnexos(m, box.dataset.anexosbox));
   m.querySelectorAll("[data-savedata]").forEach(b => b.onclick = async () => {
     const id = b.dataset.savedata, g = k => ($(`#d-${k}-${id}`)?.value ?? "").trim();
-    await write(() => D.alterar("orientandos", id, { matricula: g("mat"), programa: g("prog"), telefone: g("tel"), emailContato: g("econ").toLowerCase(), atualizadoEm: new Date().toISOString() }), "Dados guardados."); });
+    await write(() => D.alterar("orientandos", id, { matricula: g("mat"), nascimento: g("nasc"), programa: g("prog"), telefone: g("tel"), emailContato: g("econ").toLowerCase(), atualizadoEm: new Date().toISOString() }), "Dados guardados."); });
   m.querySelectorAll("[data-enviar] input[type=range]").forEach(s => s.oninput = () => { const out = $("#" + s.id + "-v"); if (out) out.textContent = s.value + "%"; });
   const acts = { exemplo: carregarExemplo, "rm-exemplo": removerExemplo, backup: copiaCompleta, "save-cfg": guardarCfg, "gerar-lembretes": () => gerarLembretes(true),
     "reset-cfg": async b => { if (b.dataset.confirm !== "1") { b.dataset.confirm = "1"; b.textContent = "Confirmar reposição"; return; } await write(() => D.gravar("config", "geral", limpo(DEFAULT_CFG)), "Valores padrão repostos."); } };
@@ -1192,10 +1274,11 @@ function fichaOrientando(o) {
     <section class="dsec"><h3>Dados <button class="btn small" data-act="edit">Editar dados e prazos</button></h3><dl class="kv">
       <dt>E-mail de acesso</dt><dd>${o.email ? esc(o.email) : `<span class="pill warn">sem e-mail — o aluno não consegue entrar</span>`}</dd>
       <dt>Matrícula</dt><dd>${esc(o.matricula || "—")}</dd>
+      <dt>Nascimento</dt><dd>${nascTxt(o.nascimento)}</dd>
       <dt>Contacto</dt><dd>${esc(o.telefone || "—")}${o.emailContato ? ` · ${esc(o.emailContato)}` : ""}</dd>
       <dt>Título</dt><dd>${esc(o.titulo || "—")}</dd><dt>Programa / curso</dt><dd>${esc(o.programa || "—")}</dd>
       <dt>Projeto</dt><dd>${p ? `${esc(p.sigla)} — ${esc(p.nome)}` : "—"}</dd><dt>Temática</dt><dd>${esc(o.tematica || "—")}</dd>
-      <dt>Coorientação</dt><dd>${esc(o.coorientador || "—")}</dd><dt>Bolsa / vínculo</dt><dd>${esc(o.bolsa || "—")}${o.bolsaFim ? ` <span class="date">até ${fmt(o.bolsaFim)}</span>` : ""}</dd>
+      <dt>Coorientação</dt><dd>${esc(o.coorientador || "—")}${coEmails(o).length ? `<div class="small muted">com acesso: ${coEmails(o).map(esc).join(", ")}</div>` : ""}</dd><dt>Bolsa / vínculo</dt><dd>${esc(o.bolsa || "—")}${o.bolsaFim ? ` <span class="date">até ${fmt(o.bolsaFim)}</span>` : ""}</dd>
       <dt>Ciclo</dt><dd><span class="date">${fmt(o.inicio)} → ${fmt(prazoDe(o))}</span>${o.prazo ? "" : ` <span class="muted small">(prazo estimado)</span>`}${o.fim ? ` · concluído em <span class="date">${fmt(o.fim)}</span>` : ""}${td != null ? ` <span class="muted small">(${Math.round(td * 100)}% do tempo)</span>` : ""}</dd>
       <dt>Metas do orientador</dt><dd>Experimental: ${o.metaExpData ? fmt(o.metaExpData) : `<span class="muted">estimada</span>`} · Escrita: ${o.metaEscritaData ? fmt(o.metaEscritaData) : `<span class="muted">estimada</span>`}</dd></dl></section>
     <section class="dsec"><h3>Marcos do ciclo de estudos <button class="btn small" data-act="add-marco">+ Marco</button></h3>
@@ -1230,11 +1313,14 @@ function formOrientando(o) {
     ${field("E-mail de acesso do aluno", "e-email", o.email, "email", true, 'placeholder="o aluno entra no Caderno com este e-mail"')}
     ${fsel("Nível", "e-nivel", niveis(), o.nivel, false, null)}${fsel("Situação", "e-sit", SITUACOES, o.situacao, false, null)}
     ${field("Curso / programa", "e-prog", o.programa, "text", true)}${field("Título do trabalho", "e-tit", o.titulo, "text", true)}
-    ${field("Matrícula", "e-mat", o.matricula)}${field("Celular / WhatsApp", "e-tel", o.telefone, "text", false, 'placeholder="opcional"')}
+    ${field("Matrícula", "e-mat", o.matricula)}${field("Data de nascimento", "e-nasc", o.nascimento, "date")}
+    ${field("Celular / WhatsApp", "e-tel", o.telefone, "text", false, 'placeholder="opcional"')}
     ${field("E-mail de contacto (alternativo)", "e-econ", o.emailContato, "email", true, 'placeholder="opcional — o de acesso é o de cima"')}
     ${fsel("Projeto", "e-proj", S.projetos.map(p => [p.id, p.sigla + " — " + p.nome]), o.projetoId, true, "Sem projeto")}
     <label>Temática<input type="text" id="e-tem" list="dl-tem" value="${esc(o.tematica || "")}" placeholder="herdada do projeto se vazia"><datalist id="dl-tem">${tematicas().map(t => `<option value="${esc(t)}">`).join("")}</datalist></label>
-    ${field("Coorientador(a)", "e-coo", o.coorientador)}
+    ${field("Coorientador(a) — nome", "e-coo", o.coorientador)}
+    <label class="full">E-mails dos coorientadores com acesso <span class="hint">um ou mais, separados por vírgula — cada um vê esta ficha (andamento, marcos, produção e reuniões) e regista reuniões de coorientação; nunca vê as notas privadas</span>
+      <input type="text" id="e-coemails" value="${esc(coEmails(o).join(", "))}" placeholder="coorientador@exemplo.br"></label>
     ${field("Bolsa / vínculo", "e-bolsa", o.bolsa, "text", false, 'placeholder="ex.: CAPES – DS, CNPq – PIBIC"')}${field("Fim da bolsa", "e-bfim", o.bolsaFim, "date")}
     <fieldset class="full" style="border:1px solid var(--line);border-radius:8px;padding:10px 12px;display:grid;grid-template-columns:1fr 1fr;gap:12px"><legend class="small muted">Prazos e metas (deixe vazio para usar a estimativa do nível)</legend>
       ${field("Início", "e-ini", o.inicio, "date")}${field("Término previsto (prazo)", "e-prazo", o.prazo, "date")}
@@ -1290,17 +1376,19 @@ function bindDrawer() {
       const nivel = v("e-nivel"), inicio = v("e-ini") || todayISO, prazoInf = v("e-prazo");
       const prazoMarcos = prazoInf || addDays(addMonths(inicio, S.cfg.niveis[nivel]?.duracao || 24), -1), projetoId = v("e-proj");
       const data = { nome, email, nivel, situacao: v("e-sit"), programa: v("e-prog"), titulo: v("e-tit"), projetoId, tematica: v("e-tem") || proj(projetoId)?.tematica || "",
-        matricula: v("e-mat"), telefone: v("e-tel"), emailContato: v("e-econ").toLowerCase(),
+        matricula: v("e-mat"), nascimento: v("e-nasc"), telefone: v("e-tel"), emailContato: v("e-econ").toLowerCase(),
+        coorientadoresEmails: listaEmails(v("e-coemails")).filter(x => x !== email),
         coorientador: v("e-coo"), bolsa: v("e-bolsa"), bolsaFim: v("e-bfim"), inicio, prazo: prazoInf, metaExpData: v("e-mexp"), metaEscritaData: v("e-mesc"), fim: v("e-fim"), atualizadoEm: new Date().toISOString() };
       if (d.type === "new-orientando") {
         const id = D.novoId("orientandos");
         if (await write(() => D.gravar("orientandos", id, { ...data, progExp: 0, progEscrita: 0, historico: [], marcos: gerarMarcos(nivel, inicio, prazoMarcos) }), "Orientando cadastrado.")) openDrawer({ type: "ori", id });
       } else {
         const o = ori(d.id), ops = [{ op: "update", col: "orientandos", id: d.id, dados: data }];
-        if (o && (o.email || "") !== email) {       // manter o acesso do aluno aos registos antigos
-          S.registos.filter(r => r.orientandoId === d.id).forEach(r => ops.push({ op: "update", col: "registos", id: r.id, dados: { alunoEmail: email } }));
-          S.atualizacoes.filter(u => u.orientandoId === d.id).forEach(u => ops.push({ op: "delete", col: "atualizacoes", id: u.id }));
-        }
+        const mudouEmail = o && (o.email || "") !== email;
+        const mudouCoori = o && coEmails(o).slice().sort().join() !== data.coorientadoresEmails.slice().sort().join();
+        if (mudouEmail || mudouCoori)       // manter o acesso do aluno e dos coorientadores aos registos antigos
+          S.registos.filter(r => r.orientandoId === d.id).forEach(r => ops.push({ op: "update", col: "registos", id: r.id, dados: { alunoEmail: email, coorientadoresEmails: data.coorientadoresEmails } }));
+        if (mudouEmail) S.atualizacoes.filter(u => u.orientandoId === d.id).forEach(u => ops.push({ op: "delete", col: "atualizacoes", id: u.id }));
         if (await write(() => D.lote(ops), "Dados guardados.")) { S.drawer.edit = false; renderDrawer(true); }
       }
     },
@@ -1313,7 +1401,7 @@ function bindDrawer() {
     "add-reg": async () => {
       const texto = v("r-texto"); if (!texto) { $("#r-texto").focus(); toast("Escreva o que foi discutido."); return; }
       const o = ori(d.id), tipo = v("r-tipo");
-      await write(() => D.gravar("registos", D.novoId("registos"), { orientandoId: d.id, alunoEmail: o.email || "", data: v("r-data") || todayISO, tipo, texto, encaminhamentos: v("r-enc"), autor: tipo === "Atualização do aluno" ? "Orientando" : "Orientador" }), "Registo adicionado.");
+      await write(() => D.gravar("registos", D.novoId("registos"), { orientandoId: d.id, alunoEmail: o.email || "", coorientadoresEmails: coEmails(o), data: v("r-data") || todayISO, tipo, texto, encaminhamentos: v("r-enc"), autor: tipo === "Atualização do aluno" ? "Orientando" : "Orientador" }), "Registo adicionado.");
       renderDrawer(true); },
     "save-nota": () => write(() => D.gravar("notas", d.id, { texto: v("n-texto"), atualizadoEm: new Date().toISOString() }), "Nota guardada."),
     "save-proj": async () => {
@@ -1352,7 +1440,8 @@ function bindDrawer() {
 (function arrancar() {
   if (!FIREBASE_CONFIG || String(FIREBASE_CONFIG.apiKey).includes("COLE_AQUI")) {
     $("#app").innerHTML = `<div class="auth"><h1>${esc(NOME_LABORATORIO)}</h1><p>Falta configurar a ligação ao Firebase.</p>
-      <p class="muted small">Edite o ficheiro <span class="mono">docs/config.js</span> e cole o objeto <span class="mono">firebaseConfig</span> do seu projeto (Guia, passo 3).</p></div>`;
+      <p class="muted small">Edite o ficheiro <span class="mono">docs/config.js</span> e cole o objeto <span class="mono">firebaseConfig</span> do seu projeto (guia, Parte 2).</p>
+      <p><a href="diagnostico.html" style="color:var(--accent)">Abrir a página de diagnóstico</a></p></div>`;
     return;
   }
   try { D.init(FIREBASE_CONFIG); } catch (e) { console.error(e); $("#app").innerHTML = `<div class="auth"><h1>${esc(NOME_LABORATORIO)}</h1><p class="msg-err">A configuração do Firebase em config.js parece inválida.</p></div>`; return; }
