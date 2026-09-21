@@ -278,7 +278,11 @@
     "exemplo": true,
     "matricula": "2200001",
     "telefone": "(48) 9 9812-4471",
-    "emailContato": ""
+    "emailContato": "",
+    "nascimento": "1996-09-14",
+    "coorientadoresEmails": [
+     "clara.mendes@exemplo.br"
+    ]
    },
    "o02": {
     "nome": "Rafael Nunes Pires",
@@ -461,7 +465,9 @@
     "exemplo": true,
     "matricula": "2210002",
     "telefone": "",
-    "emailContato": ""
+    "emailContato": "",
+    "nascimento": "1994-02-03",
+    "coorientadoresEmails": []
    },
    "o03": {
     "nome": "Juliana Kato",
@@ -702,7 +708,9 @@
     "exemplo": true,
     "matricula": "2220003",
     "telefone": "(48) 9 9645-2210",
-    "emailContato": ""
+    "emailContato": "",
+    "nascimento": "1993-11-27",
+    "coorientadoresEmails": []
    },
    "o04": {
     "nome": "Lucas Ferreira Dias",
@@ -838,7 +846,9 @@
     "exemplo": true,
     "matricula": "2230004",
     "telefone": "",
-    "emailContato": ""
+    "emailContato": "",
+    "nascimento": "1999-05-19",
+    "coorientadoresEmails": []
    },
    "o05": {
     "nome": "Mariana Oliveira Costa",
@@ -992,7 +1002,11 @@
     "exemplo": true,
     "matricula": "2240005",
     "telefone": "(47) 9 9911-3387",
-    "emailContato": ""
+    "emailContato": "",
+    "nascimento": "1998-09-30",
+    "coorientadoresEmails": [
+     "helena.vasconcelos@exemplo.br"
+    ]
    },
    "o06": {
     "nome": "Pedro Henrique Sá",
@@ -1066,7 +1080,9 @@
     "exemplo": true,
     "matricula": "",
     "telefone": "",
-    "emailContato": ""
+    "emailContato": "",
+    "nascimento": "1991-07-08",
+    "coorientadoresEmails": []
    },
    "o07": {
     "nome": "Camila Rocha",
@@ -1182,7 +1198,11 @@
     "exemplo": true,
     "matricula": "2200007",
     "telefone": "(48) 9 9702-5518",
-    "emailContato": ""
+    "emailContato": "",
+    "nascimento": "2004-03-22",
+    "coorientadoresEmails": [
+     "ana.moura@exemplo.br"
+    ]
    },
    "o08": {
     "nome": "Gabriel Tavares",
@@ -1231,7 +1251,11 @@
     "exemplo": true,
     "matricula": "",
     "telefone": "",
-    "emailContato": ""
+    "emailContato": "",
+    "nascimento": "2005-09-02",
+    "coorientadoresEmails": [
+     "juliana.kato@exemplo.br"
+    ]
    },
    "o09": {
     "nome": "Letícia Amaral",
@@ -1286,7 +1310,9 @@
     "exemplo": true,
     "matricula": "",
     "telefone": "",
-    "emailContato": ""
+    "emailContato": "",
+    "nascimento": "2004-12-11",
+    "coorientadoresEmails": []
    },
    "o10": {
     "nome": "Thiago Brandão",
@@ -1348,7 +1374,11 @@
     "exemplo": true,
     "matricula": "2230010",
     "telefone": "",
-    "emailContato": ""
+    "emailContato": "",
+    "nascimento": "2003-06-25",
+    "coorientadoresEmails": [
+     "rafael.pires@exemplo.br"
+    ]
    },
    "o11": {
     "nome": "Helena Vasconcelos",
@@ -1465,7 +1495,9 @@
     "exemplo": true,
     "matricula": "2240011",
     "telefone": "",
-    "emailContato": ""
+    "emailContato": "",
+    "nascimento": "1989-04-17",
+    "coorientadoresEmails": []
    },
    "o12": {
     "nome": "Diego Martins",
@@ -1607,7 +1639,9 @@
     "exemplo": true,
     "matricula": "2250012",
     "telefone": "",
-    "emailContato": ""
+    "emailContato": "",
+    "nascimento": "1997-01-09",
+    "coorientadoresEmails": []
    },
    "o13": {
     "nome": "Sofia Lemos",
@@ -1702,7 +1736,9 @@
     "exemplo": true,
     "matricula": "2200013",
     "telefone": "",
-    "emailContato": ""
+    "emailContato": "",
+    "nascimento": "2003-08-15",
+    "coorientadoresEmails": []
    },
    "o14": {
     "nome": "Bruna Castilho",
@@ -1791,7 +1827,9 @@
     "exemplo": true,
     "matricula": "2210014",
     "telefone": "",
-    "emailContato": ""
+    "emailContato": "",
+    "nascimento": "1997-10-05",
+    "coorientadoresEmails": []
    }
   },
   "producoes": {
@@ -1967,7 +2005,10 @@
     "texto": "Discutimos a estrutura do capítulo 4 (ensaios com efluente real). Resultados de ciclos de regeneração consistentes.",
     "encaminhamentos": "Enviar rascunho do cap. 4 até 30/09; agendar pré-banca para dezembro.",
     "alunoEmail": "ana.moura@exemplo.br",
-    "exemplo": true
+    "exemplo": true,
+    "coorientadoresEmails": [
+     "clara.mendes@exemplo.br"
+    ]
    },
    "r02": {
     "orientandoId": "o01",
@@ -1977,7 +2018,10 @@
     "texto": "Concluídos os ensaios de regeneração (5 ciclos). Parecer de revisão do artigo na Chemosphere recebido.",
     "encaminhamentos": "Responder aos revisores em 3 semanas.",
     "alunoEmail": "ana.moura@exemplo.br",
-    "exemplo": true
+    "exemplo": true,
+    "coorientadoresEmails": [
+     "clara.mendes@exemplo.br"
+    ]
    },
    "r03": {
     "orientandoId": "o02",
@@ -1987,7 +2031,8 @@
     "texto": "Qualificação não ocorreu no prazo: faltam dados de seletividade Nd/Fe. Texto do projeto em 60%.",
     "encaminhamentos": "Definir nova data com a coordenação (limite: outubro). Priorizar ensaios de seletividade.",
     "alunoEmail": "rafael.pires@exemplo.br",
-    "exemplo": true
+    "exemplo": true,
+    "coorientadoresEmails": []
    },
    "r04": {
     "orientandoId": "o03",
@@ -1997,7 +2042,8 @@
     "texto": "Tese em revisão final dos capítulos 2 e 3. Artigo do estudo em coluna aceito.",
     "encaminhamentos": "Sugerir nomes para a banca; reservar data de defesa em 10/12.",
     "alunoEmail": "juliana.kato@exemplo.br",
-    "exemplo": true
+    "exemplo": true,
+    "coorientadoresEmails": []
    },
    "r05": {
     "orientandoId": "o04",
@@ -2007,7 +2053,8 @@
     "texto": "Resumo aceito no congresso. Projeto de qualificação ainda sem revisão bibliográfica completa.",
     "encaminhamentos": "Entregar texto de qualificação até 30/09 para leitura.",
     "alunoEmail": "lucas.dias@exemplo.br",
-    "exemplo": true
+    "exemplo": true,
+    "coorientadoresEmails": []
    },
    "r06": {
     "orientandoId": "o05",
@@ -2017,7 +2064,10 @@
     "texto": "Bolsa encerrada em julho; aluna trabalhando meio período. Escrita da dissertação em 55%.",
     "encaminhamentos": "Cronograma semanal de escrita; confirmar banca para 27/11.",
     "alunoEmail": "mariana.costa@exemplo.br",
-    "exemplo": true
+    "exemplo": true,
+    "coorientadoresEmails": [
+     "helena.vasconcelos@exemplo.br"
+    ]
    },
    "r07": {
     "orientandoId": "o06",
@@ -2027,7 +2077,8 @@
     "texto": "Dificuldade de conciliar trabalho e laboratório. Síntese de eletrodos com baixa reprodutibilidade.",
     "encaminhamentos": "Definir dois dias fixos por semana no laboratório; revisar protocolo com Bruna.",
     "alunoEmail": "pedro.sa@exemplo.br",
-    "exemplo": true
+    "exemplo": true,
+    "coorientadoresEmails": []
    },
    "r08": {
     "orientandoId": "o07",
@@ -2037,7 +2088,10 @@
     "texto": "Apresentação no seminário de IC muito boa. Bolsa renovada para 2026/27.",
     "encaminhamentos": "Novo plano de trabalho: isotermas com mistura de fármacos.",
     "alunoEmail": "camila.rocha@exemplo.br",
-    "exemplo": true
+    "exemplo": true,
+    "coorientadoresEmails": [
+     "ana.moura@exemplo.br"
+    ]
    },
    "r09": {
     "orientandoId": "o08",
@@ -2047,7 +2101,10 @@
     "texto": "Integração ao laboratório: treinamento de segurança concluído e acesso ao FTIR solicitado.",
     "encaminhamentos": "Acompanhar Juliana nas análises BET.",
     "alunoEmail": "gabriel.tavares@exemplo.br",
-    "exemplo": true
+    "exemplo": true,
+    "coorientadoresEmails": [
+     "juliana.kato@exemplo.br"
+    ]
    },
    "r10": {
     "orientandoId": "o09",
@@ -2057,7 +2114,8 @@
     "texto": "Campanha de coleta de julho concluída (12 pontos). Relatório parcial por iniciar.",
     "encaminhamentos": "Entregar relatório parcial até 01/09.",
     "alunoEmail": "leticia.amaral@exemplo.br",
-    "exemplo": true
+    "exemplo": true,
+    "coorientadoresEmails": []
    },
    "r11": {
     "orientandoId": "o10",
@@ -2067,7 +2125,10 @@
     "texto": "Plano de atividades assinado. Início dos ensaios acompanhando o Rafael.",
     "encaminhamentos": "Caderno de laboratório atualizado semanalmente.",
     "alunoEmail": "thiago.brandao@exemplo.br",
-    "exemplo": true
+    "exemplo": true,
+    "coorientadoresEmails": [
+     "rafael.pires@exemplo.br"
+    ]
    },
    "r12": {
     "orientandoId": "o11",
@@ -2077,7 +2138,8 @@
     "texto": "Artigo da Mariana submetido. Discutida a renovação da bolsa FAPESC (vence em novembro).",
     "encaminhamentos": "Preparar relatório e pedido de renovação até 15/10.",
     "alunoEmail": "helena.vasconcelos@exemplo.br",
-    "exemplo": true
+    "exemplo": true,
+    "coorientadoresEmails": []
    },
    "r13": {
     "orientandoId": "o14",
@@ -2087,7 +2149,8 @@
     "texto": "Revisão bibliográfica em andamento; proposta de rede de sensores discutida com o grupo.",
     "encaminhamentos": "Matricular-se no exame de proficiência de dezembro.",
     "alunoEmail": "bruna.castilho@exemplo.br",
-    "exemplo": true
+    "exemplo": true,
+    "coorientadoresEmails": []
    },
    "r14": {
     "orientandoId": "o02",
@@ -2097,6 +2160,21 @@
     "texto": "ICP-OES em manutenção por duas semanas; ensaios de seletividade atrasados.",
     "encaminhamentos": "",
     "alunoEmail": "rafael.pires@exemplo.br",
+    "exemplo": true,
+    "coorientadoresEmails": []
+   },
+   "r15": {
+    "orientandoId": "o01",
+    "alunoEmail": "ana.moura@exemplo.br",
+    "coorientadoresEmails": [
+     "clara.mendes@exemplo.br"
+    ],
+    "data": "2026-09-09",
+    "tipo": "Reunião de coorientação",
+    "autor": "Profa. Clara Mendes",
+    "autorEmail": "clara.mendes@exemplo.br",
+    "texto": "Revisão do tratamento estatístico das isotermas; sugeri incluir o modelo de Sips no capítulo 3.",
+    "encaminhamentos": "Enviar tabela revista até 20/09.",
     "exemplo": true
    }
   },
