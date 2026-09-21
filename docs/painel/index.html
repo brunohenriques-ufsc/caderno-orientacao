@@ -1,0 +1,26 @@
+<!doctype html>
+<html lang="pt-BR">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<title>Painel do Laboratório</title>
+<link rel="icon" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 100 100'><text y='.9em' font-size='90'>🔬</text></svg>">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Barlow+Condensed:wght@500;600;700&family=Barlow:wght@400;500;600&family=JetBrains+Mono:wght@400;600&display=swap">
+<link rel="stylesheet" href="painel.css">
+<style>body{margin:0}[hidden]{display:none!important}</style>
+</head>
+<body>
+<div id="carregando" class="carregando">A carregar…</div>
+<div id="entrada" hidden></div>
+<div id="tv" class="tv" hidden></div>
+<div class="tv-ctl" id="tvctl" hidden>
+  <button id="btnFull" type="button">Tela cheia</button>
+  <button id="btnAdmin" type="button">Gestão</button>
+</div>
+<div id="admin" hidden></div>
+<dialog id="dlg"></dialog>
+<div class="toast" id="toast" hidden></div>
+<script type="module" src="painel.js"></script>
+</body>
+</html>
