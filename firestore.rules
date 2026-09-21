@@ -104,6 +104,29 @@ service cloud.firestore {
       allow write: if ehEditor();
     }
 
+    // ======================= PAINEL DO LABORATÓRIO =======================
+    // Dados próprios do painel da TV (coleção "lab"). Quem gere: orientador,
+    // co-editores e os "gestores do painel" listados em lab/acesso. A TV só lê.
+    // lab/resumo é o recorte do Caderno que pode ir para a TV (gravado pelos editores).
+    function acessoPainel() { return /databases/$(database)/documents/lab/acesso; }
+    function listaPainel(campo) {
+      return exists(acessoPainel()) ? get(acessoPainel()).data.get(campo, []) : [];
+    }
+    function ehGestorPainel() { return ehEditor() || (autenticado() && meuEmail() in listaPainel('gestores')); }
+    function ehTVPainel() { return autenticado() && meuEmail() in listaPainel('tv'); }
+    function leitorPainel() { return ehGestorPainel() || ehTVPainel(); }
+
+    match /lab/{docId} {
+      allow read: if leitorPainel();
+      allow write: if (docId == 'acesso' && ehOrientador())
+                   || (docId == 'resumo' && ehEditor())
+                   || (!(docId in ['acesso', 'resumo']) && ehGestorPainel());
+    }
+    match /lab/{grupo}/itens/{id} {
+      allow read: if leitorPainel();
+      allow write: if ehGestorPainel();
+    }
+
     // Tudo o resto: fechado.
     match /{outro=**} {
       allow read, write: if false;

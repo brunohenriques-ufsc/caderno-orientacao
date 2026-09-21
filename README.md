@@ -333,3 +333,11 @@ Por baixo do formulário aparece também o nome do projeto Firebase em uso — s
   ter também a base de dados dentro da UFSC é preciso uma máquina virtual da SeTIC (abrir chamado
   de análise de demanda de serviços de nuvem) e substituir a camada `docs/data.js` por uma base
   própria — um trabalho de adaptação que pode ser pedido depois.
+
+---
+
+## Painel do laboratório (TV)
+
+A pasta `docs/painel` contém o painel para a TV do laboratório, que usa este mesmo projeto Firebase
+e mostra, a partir do Caderno, próximas defesas, publicações, congressos e aniversários (só dia e
+mês). Instalação e uso: ver **PAINEL.md**.
